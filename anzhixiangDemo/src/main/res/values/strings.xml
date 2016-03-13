@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="view_pager_guide">ViewPager引导页效果</string>
+    <string name="retrofit_request">Retrofit网络请求</string>
 </resources>

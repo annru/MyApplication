@@ -10,16 +10,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/anzhixiangDemo" />
-            <option value="$PROJECT_DIR$/frescoDemo" />
-            <option value="$PROJECT_DIR$/okHttpDemo" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/anzhixiangDemo" />
-            <option value="$PROJECT_DIR$/frescoDemo" />
-            <option value="$PROJECT_DIR$/okHttpDemo" />
           </set>
         </option>
       </GradleProjectSettings>

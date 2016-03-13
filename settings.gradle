@@ -1,1 +1,1 @@
-include ':okHttpDemo', ':frescoDemo', ':anzhixiangDemo'
+include ':anzhixiangDemo'
