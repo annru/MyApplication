@@ -15,9 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/view_pager_guide" />
+
     <Button
         android:id="@+id/retrofit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/retrofit_request" />
+
 </LinearLayout>
