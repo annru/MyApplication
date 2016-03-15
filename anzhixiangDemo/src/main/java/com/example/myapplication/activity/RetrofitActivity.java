@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.myapplication.R;
+import com.example.myapplication.model.APIService;
+import com.example.myapplication.model.Repo;
 import com.example.myapplication.model.gitmodel;
 
+import retrofit.Call;
 import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
 import retrofit.http.GET;
 import retrofit.http.Path;
 
@@ -26,23 +29,57 @@ public class RetrofitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit);
 
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.github.com").build();
-        gitapi service = restAdapter.create(gitapi.class);
 
-        service.getFeed("basil2style", new Callback<gitmodel>() {
+        /**
+         *1.9版本请求方式
+         */
+
+//        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.github.com").build();
+//        gitapi service = restAdapter.create(gitapi.class);
+//
+//        service.getFeed("basil2style", new Callback<gitmodel>() {
+//            @Override
+//            public void success(gitmodel gitmodel, Response response) {
+//                Log.i(TAG, "success");
+//                Log.i(TAG, gitmodel.getCompany());
+//                Log.i(TAG, gitmodel.getName());
+//                Log.i(TAG, gitmodel.getBlog());
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                Log.i(TAG,error.getMessage());
+//            }
+//        });
+
+
+        /**
+         * 2.0版本请求方式
+         */
+        //异步请求
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://www.weather.com.cn")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        APIService service = retrofit.create(APIService.class);
+        Call<Repo> call = service.loadRepo();
+        call.enqueue(new Callback<Repo>() {
             @Override
-            public void success(gitmodel gitmodel, Response response) {
-                Log.i(TAG, "success");
-                Log.i(TAG, gitmodel.getCompany());
-                Log.i(TAG, gitmodel.getName());
-                Log.i(TAG, gitmodel.getBlog());
+            public void onResponse(Response<Repo> response) {
+                // Get result Repo from response.body()
+                Log.d("onResponse", response.body().getWeatherinfo().getCity());
             }
 
             @Override
-            public void failure(RetrofitError error) {
-                Log.i(TAG,error.getMessage());
+            public void onFailure(Throwable t) {
+                Log.e("onFailure", t.getMessage());
+
             }
         });
+
+
+
     }
 
 
