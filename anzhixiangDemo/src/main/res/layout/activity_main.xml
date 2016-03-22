@@ -27,4 +27,10 @@
         android:layout_height="wrap_content"
         android:text="@string/address_book" />
 
+    <Button
+        android:id="@+id/recycler_view_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recycler_view" />
+
 </LinearLayout>

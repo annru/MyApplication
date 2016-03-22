@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+
 import com.example.myapplication.R;
 
 import butterknife.Bind;
@@ -24,9 +25,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.retrofit_btn)
     Button retrofitBtn;
 
+<<<<<<< HEAD
+    @Bind(R.id.recycler_view_btn)
+    Button recyclerViewBtn;
+=======
     @Bind(R.id.address_book_btn)
     Button addressBookBtn;
 
+>>>>>>> cb14a73c9f92d3c9c127afa1b08bfd8ca5f0ede2
 
 
     @Override
@@ -36,7 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         viewPagerBtn.setOnClickListener(this);
         retrofitBtn.setOnClickListener(this);
+
+        recyclerViewBtn.setOnClickListener(this);
+
         addressBookBtn.setOnClickListener(this);
+
     }
 
     @Override
@@ -51,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, RetrofitActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.recycler_view_btn:
+                intent = new Intent(this, RecyclerViewActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.address_book_btn:
                 intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
                 startActivityForResult(intent,1);
@@ -119,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     phone.close();
                 }
             }
+
         }
         return result;
     }
