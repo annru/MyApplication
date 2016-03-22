@@ -7,5 +7,6 @@
     <string name="recycler_view">RecyclerView使用</string>
 
     <string name="address_book">调用通讯录</string>
+    <string name="grid_password">6位数格子密码</string>
 
 </resources>

@@ -7,13 +7,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
-
 import com.example.myapplication.R;
+import com.jungly.gridpasswordview.GridPasswordView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -25,14 +27,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.retrofit_btn)
     Button retrofitBtn;
 
-<<<<<<< HEAD
     @Bind(R.id.recycler_view_btn)
     Button recyclerViewBtn;
-=======
     @Bind(R.id.address_book_btn)
     Button addressBookBtn;
 
->>>>>>> cb14a73c9f92d3c9c127afa1b08bfd8ca5f0ede2
+    @Bind(R.id.grid_password_btn)
+    Button gridPasswordBtn;
 
 
     @Override
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerViewBtn.setOnClickListener(this);
 
         addressBookBtn.setOnClickListener(this);
+        gridPasswordBtn.setOnClickListener(this);
 
     }
 
@@ -69,7 +71,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.address_book_btn:
                 intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
+                break;
+            case R.id.grid_password_btn:
+                inputPwdDialog();
+//                intent = new Intent(this, GridPasswordActivity.class);
+//                startActivity(intent);
                 break;
         }
     }
@@ -77,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == Activity.RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             ContentResolver cr = getContentResolver();
             Cursor cursor = cr.query(uri, null, null, null, null);
@@ -96,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 获取联系人手机号码
+     *
      * @param cursor
      * @return
      */
@@ -139,4 +147,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return result;
     }
+
+
+    /**
+     * 密码输入框
+     */
+    private void inputPwdDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.show();
+        alertDialog.setContentView(R.layout.dialog_input_password);
+        GridPasswordView pwdView = (GridPasswordView)alertDialog.findViewById(R.id.gpv_normal);
+        pwdView.setOnPasswordChangedListener(new GridPasswordView.OnPasswordChangedListener() {
+            @Override
+            public void onTextChanged(String psw) {
+                Log.i("onTextChanged",psw);
+            }
+
+            @Override
+            public void onInputFinish(String psw) {
+               Log.i("onInputFinish",psw);
+            }
+        });
+        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+    }
+
 }
