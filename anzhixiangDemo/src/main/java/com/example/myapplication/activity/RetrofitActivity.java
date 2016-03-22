@@ -7,15 +7,16 @@ import android.util.Log;
 import com.example.myapplication.R;
 import com.example.myapplication.model.APIService;
 import com.example.myapplication.model.Repo;
-import com.example.myapplication.model.gitmodel;
 
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
-import retrofit.http.GET;
-import retrofit.http.Path;
+
+//import retrofit.Callback;
+//import retrofit.http.GET;
+//import retrofit.http.Path;
 
 /**
  * Retrofit网络请求示例
@@ -83,8 +84,8 @@ public class RetrofitActivity extends AppCompatActivity {
     }
 
 
-    public interface gitapi {
-        @GET("/users/{user}")
-        void getFeed(@Path("user") String user, Callback<gitmodel> response);
-    }
+//    public interface gitapi {
+//        @GET("/users/{user}")
+//        void getFeed(@Path("user") String user, Callback<gitmodel> response);
+//    }
 }
