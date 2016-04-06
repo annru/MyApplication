@@ -8,5 +8,19 @@
 
     <string name="address_book">调用通讯录</string>
     <string name="grid_password">6位数格子密码</string>
+    <string name="tab_fragment_button">Tab标签页</string>
+    <string name="radio_btn">radio button来实现</string>
+    <string name="tab1_fragment_button_text">标签页1</string>
+    <string name="tab2_fragment_button_text">标签页2</string>
+    <string name="tab3_fragment_button_text">标签页3</string>
+    <string name="tab4_fragment_button_text">标签页4</string>
+    <string name="tab1_text">标签页1内容</string>
+    <string name="tab2_text">标签页2内容</string>
+    <string name="tab3_text">标签页3内容</string>
+    <string name="tab4_text">标签页4内容</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

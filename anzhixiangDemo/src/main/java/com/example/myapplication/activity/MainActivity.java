@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.grid_password_btn)
     Button gridPasswordBtn;
 
+    @Bind(R.id.tab_fragment_btn)
+    Button tabFragmentBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         addressBookBtn.setOnClickListener(this);
         gridPasswordBtn.setOnClickListener(this);
+        tabFragmentBtn.setOnClickListener(this);
 
     }
 
@@ -63,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, RetrofitActivity.class);
                 startActivity(intent);
                 break;
-
             case R.id.recycler_view_btn:
                 intent = new Intent(this, RecyclerViewActivity.class);
                 startActivity(intent);
@@ -78,8 +81,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                intent = new Intent(this, GridPasswordActivity.class);
 //                startActivity(intent);
                 break;
+            case R.id.tab_fragment_btn:
+                intent = new Intent(this, MyTabActivity.class);
+                startActivity(intent);
+                break;
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -101,11 +109,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
     /**
      * 获取联系人手机号码
      *
-     * @param cursor
-     * @return
+     * @param cursor 游标
+     * @return String
      */
     private String getContactPhone(Cursor cursor) {
         int phoneColumn = cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER);
@@ -156,20 +165,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.show();
         alertDialog.setContentView(R.layout.dialog_input_password);
-        GridPasswordView pwdView = (GridPasswordView)alertDialog.findViewById(R.id.gpv_normal);
+        GridPasswordView pwdView = (GridPasswordView) alertDialog.findViewById(R.id.gpv_normal);
         pwdView.setOnPasswordChangedListener(new GridPasswordView.OnPasswordChangedListener() {
             @Override
             public void onTextChanged(String psw) {
-                Log.i("onTextChanged",psw);
+                Log.i("onTextChanged", psw);
             }
 
             @Override
             public void onInputFinish(String psw) {
-               Log.i("onInputFinish",psw);
+                Log.i("onInputFinish", psw);
             }
         });
         alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }
+
 
 }
