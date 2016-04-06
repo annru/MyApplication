@@ -57,7 +57,6 @@ public class MyTabActivity extends AppCompatActivity implements RadioGroup.OnChe
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.hide(currentFragment);
-        Log.i("MyTabActivity", "onCheckedChanged");
         switch (checkedId) {
             case R.id.tab1_fragment_btn:
 
