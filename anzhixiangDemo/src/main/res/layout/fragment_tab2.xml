@@ -1,13 +1,41 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.example.myapplication.fragment.Tab1Fragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.example.myapplication.fragment.Tab1Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RadioGroup
+        android:id="@+id/product_radio_group"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/tab2_text"/>
+        android:layout_height="48dp"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <RadioButton
+            android:id="@+id/product_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/product_text"/>
+
+        <RadioButton
+            android:id="@+id/org_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/org_text"/>
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/product_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>
