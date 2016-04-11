@@ -38,6 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.tab_fragment_btn)
     Button tabFragmentBtn;
 
+    @Bind(R.id.tab_calendar_btn)
+    Button tabCalendarBtn;
+
+    @Bind(R.id.tab_calendar2_btn)
+    Button tabCalendarBtn2;
+
+    @Bind(R.id.tab_calendar3_btn)
+    Button tabCalendarBtn3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addressBookBtn.setOnClickListener(this);
         gridPasswordBtn.setOnClickListener(this);
         tabFragmentBtn.setOnClickListener(this);
+        tabCalendarBtn.setOnClickListener(this);
+        tabCalendarBtn2.setOnClickListener(this);
+        tabCalendarBtn3.setOnClickListener(this);
 
     }
 
@@ -83,6 +95,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tab_fragment_btn:
                 intent = new Intent(this, MyTabActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tab_calendar_btn:
+                intent = new Intent(this, MyCalendarActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tab_calendar2_btn:
+                intent = new Intent(this, MyCalendar2Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.tab_calendar3_btn:
+                intent = new Intent(this, MyCalendar3Activity.class);
                 startActivity(intent);
                 break;
         }
