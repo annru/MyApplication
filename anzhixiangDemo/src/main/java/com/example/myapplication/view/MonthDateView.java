@@ -642,4 +642,12 @@ public class MonthDateView extends View {
 		setSelectYearMonth(mCurrYear,mCurrMonth,mCurrDay);
 		invalidate();
 	}
+
+//	/**
+//	 +	 * 设置事务天数
+//	 +	 * @param daysHasThingList
+//	 +	 */
+//	public void setDaysHasThingList(List<Integer> daysHasThingList) {
+//				this.daysHasThingList = daysHasThingList;
+//			}
 }

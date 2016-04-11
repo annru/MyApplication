@@ -29,6 +29,7 @@
         <activity android:name=".activity.MyCalendarActivity"/>
         <activity android:name=".activity.MyCalendar2Activity"/>
         <activity android:name=".activity.MyCalendar3Activity"/>
+        <activity android:name=".activity.MyCalendar4Activity"/>
     </application>
 
 </manifest>

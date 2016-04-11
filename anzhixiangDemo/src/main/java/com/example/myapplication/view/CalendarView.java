@@ -31,7 +31,7 @@ public class CalendarView extends LinearLayout {
         iv_right = (ImageView) view.findViewById(R.id.iv_right);
         monthDateView = (MonthDateView) view.findViewById(R.id.monthDateView);
         tv_date = (TextView) view.findViewById(R.id.date_text);
-        tv_week = (TextView) view.findViewById(R.id.selectDate_text);
+//        tv_week = (TextView) view.findViewById(R.id.selectDate_text);
         tv_today = (TextView) view.findViewById(R.id.tv_today);
         monthDateView.setTextView(tv_date, tv_week);
         monthDateView.setDayAndPriceList(listDayAndPrice);
