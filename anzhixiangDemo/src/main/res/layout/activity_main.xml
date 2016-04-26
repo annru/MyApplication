@@ -57,6 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calendar_2"/>
+
     <Button
         android:id="@+id/tab_calendar3_btn"
         android:layout_width="match_parent"
@@ -68,5 +69,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calendar_4"/>
+
+
+    <Button
+        android:id="@+id/image_play_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/image_play"/>
 
 </LinearLayout>

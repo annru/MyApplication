@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.tab_calendar4_btn)
     Button tabCalendarBtn4;
 
+    @Bind(R.id.image_play_btn)
+    Button iamgePlayBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabCalendarBtn2.setOnClickListener(this);
         tabCalendarBtn3.setOnClickListener(this);
         tabCalendarBtn4.setOnClickListener(this);
+        iamgePlayBtn.setOnClickListener(this);
 
     }
 
@@ -115,6 +119,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tab_calendar4_btn:
                 intent = new Intent(this, MyCalendar4Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.image_play_btn:
+                intent = new Intent(this, BannerActivity.class);
                 startActivity(intent);
                 break;
         }
