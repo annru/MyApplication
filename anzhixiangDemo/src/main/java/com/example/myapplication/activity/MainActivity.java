@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.tab_calendar2_btn:
-                intent = new Intent(this, MyCalendar2Activity.class);
-                startActivity(intent);
+//                intent = new Intent(this, MyCalendar2Activity.class);
+//                startActivity(intent);
                 break;
             case R.id.tab_calendar3_btn:
                 intent = new Intent(this, MyCalendar3Activity.class);
