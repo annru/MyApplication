@@ -12,6 +12,25 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="?attr/colorPrimary">-->
+
+            <!--<ImageButton-->
+                <!--android:id="@+id/fabButton"-->
+                <!--android:layout_width="56dp"-->
+                <!--android:layout_height="56dp"-->
+                <!--android:layout_gravity="bottom|end"-->
+                <!--android:layout_marginbottom="16dp"-->
+                <!--android:layout_marginright="16dp"-->
+                <!--android:background="@drawable/fab_background"-->
+                <!--android:contentDescription="@null"-->
+                <!--android:src="@drawable/ic_favorite_outline_white_24dp" />-->
+        <!--</android.support.v7.widget.Toolbar>-->
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
