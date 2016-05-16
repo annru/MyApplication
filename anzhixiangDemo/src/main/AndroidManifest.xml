@@ -33,6 +33,8 @@
         <!-- <activity android:name=".activity.BannerActivity"/> -->
         <activity android:name=".activity.WebPActivity">
         </activity>
+        <activity android:name=".activity.GuideFunctionActivity">
+        </activity>
     </application>
 
 </manifest>

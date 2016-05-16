@@ -26,6 +26,7 @@
     <string name="calendar_4">日历4</string>
     <string name="image_play">图片轮播</string>
     <string name="webp_img">webP格式图片的使用</string>
+    <string name="guide_btn">透明指示层</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

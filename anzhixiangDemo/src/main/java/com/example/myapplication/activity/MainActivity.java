@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.webp_test_btn)
     Button webpBtn;
 
+    @Bind(R.id.guide_btn)
+    Button guideBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabCalendarBtn4.setOnClickListener(this);
 //        iamgePlayBtn.setOnClickListener(this);
         webpBtn.setOnClickListener(this);
+        guideBtn.setOnClickListener(this);
 
     }
 
@@ -131,6 +134,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                break;
             case R.id.webp_test_btn:
                 intent = new Intent(this, WebPActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.guide_btn:
+                intent = new Intent(this, GuideFunctionActivity.class);
                 startActivity(intent);
                 break;
         }
