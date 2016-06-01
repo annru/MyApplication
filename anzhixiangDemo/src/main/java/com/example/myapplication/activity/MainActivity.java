@@ -59,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.guide_btn)
     Button guideBtn;
 
+    @Bind(R.id.listview_group_btn)
+    Button listviewGroupBtn;
+
+
+    @Bind(R.id.webview_btn)
+    Button webviewBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        iamgePlayBtn.setOnClickListener(this);
         webpBtn.setOnClickListener(this);
         guideBtn.setOnClickListener(this);
+        listviewGroupBtn.setOnClickListener(this);
+        webviewBtn.setOnClickListener(this);
 
     }
 
@@ -138,6 +147,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.guide_btn:
                 intent = new Intent(this, GuideFunctionActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.listview_group_btn:
+//                intent = new Intent(this, ListViewGroupActivity.class);
+//                startActivity(intent);
+                break;
+            case R.id.webview_btn:
+                intent = new Intent(this, MyWebViewActivity.class);
                 startActivity(intent);
                 break;
         }

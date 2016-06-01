@@ -35,6 +35,8 @@
         </activity>
         <activity android:name=".activity.GuideFunctionActivity">
         </activity>
+        <activity android:name=".activity.MyWebViewActivity">
+        </activity>
     </application>
 
 </manifest>

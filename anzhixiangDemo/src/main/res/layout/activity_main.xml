@@ -96,5 +96,17 @@
             android:layout_height="wrap_content"
             android:text="@string/guide_btn"/>
 
+        <Button
+            android:id="@+id/listview_group_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guide_btn"/>
+
+        <Button
+            android:id="@+id/webview_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/webview_btn"/>
+
     </LinearLayout>
 </ScrollView>
