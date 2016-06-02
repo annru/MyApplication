@@ -72,6 +72,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 super.onScrolled(recyclerView, dx, dy);
                 //dy>0表示正在想下滚动，小于或等于0在表示在向上滚动或者停止滚动
                 isSlidingToLast = dy > 0;
+                Log.i("dy", dy + "");
             }
         });
 
@@ -81,7 +82,13 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 Log.i("onLoadMoreData", "加载更多回调");
             }
         });
+//        setFooterView(recyclerView, adapter);
+    }
 
+
+    private void setFooterView(RecyclerView view, MyRecyclerViewAdapter adapter) {
+        View footerView = LayoutInflater.from(this).inflate(R.layout.recycler_view_footer, view, false);
+        adapter.setFooterView(footerView);
     }
 
 
@@ -94,19 +101,44 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> implements View.OnClickListener {
         private OnRecyclerViewItemClickListener mListener;
+        public static final int TYPE_HEADER = 0;
+        public static final int TYPE_ITEM = 1;
+        public static final int TYPE_FOOTER = 2;
+        private View headerView;
+        private View footerView;
+
 
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(RecyclerViewActivity.this).inflate(R.layout.recycler_view_item, parent, false);
-            view.setOnClickListener(this);
+            View view = null;
+            switch (viewType) {
+                case TYPE_ITEM:
+                    view = LayoutInflater.from(RecyclerViewActivity.this).inflate(R.layout.recycler_view_item, parent, false);
+                    view.setOnClickListener(this);
+                    break;
+                case TYPE_FOOTER:
+                    view = LayoutInflater.from(RecyclerViewActivity.this).inflate(R.layout.recycler_view_footer, parent, false);
+                    view.setOnClickListener(this);
+                    break;
+            }
             return new MyViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
+            if (getItemViewType(position) == TYPE_HEADER) return;
             holder.titleTv.setText(mData.get(position).getTitle());
             holder.itemView.setTag(mData.get(position));
-            Log.i("onBindViewHolder", position + "");
+        }
+
+
+        @Override
+        public int getItemViewType(int position) {
+            if (footerView == null)
+                return TYPE_ITEM;
+            if (position == 0)
+                return TYPE_FOOTER;
+            return TYPE_ITEM;
         }
 
         @Override
@@ -134,6 +166,12 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
             this.mListener = listener;
+        }
+
+
+        public void setFooterView(View view) {
+            footerView = view;
+            notifyItemInserted(0);
         }
     }
 
