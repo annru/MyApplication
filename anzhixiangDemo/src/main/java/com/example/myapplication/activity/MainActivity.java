@@ -53,6 +53,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    @Bind(R.id.image_play_btn)
 //    Button iamgePlayBtn;
 
+    @Bind(R.id.webp_test_btn)
+    Button webpBtn;
+
+    @Bind(R.id.guide_btn)
+    Button guideBtn;
+
+    @Bind(R.id.listview_group_btn)
+    Button listviewGroupBtn;
+
+
+    @Bind(R.id.webview_btn)
+    Button webviewBtn;
+
+
+    @Bind(R.id.video_btn)
+    Button videoBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +88,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabCalendarBtn3.setOnClickListener(this);
         tabCalendarBtn4.setOnClickListener(this);
 //        iamgePlayBtn.setOnClickListener(this);
+        webpBtn.setOnClickListener(this);
+        guideBtn.setOnClickListener(this);
+        listviewGroupBtn.setOnClickListener(this);
+        webviewBtn.setOnClickListener(this);
+        videoBtn.setOnClickListener(this);
 
     }
 
@@ -125,6 +146,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                intent = new Intent(this, BannerActivity.class);
 //                startActivity(intent);
 //                break;
+            case R.id.webp_test_btn:
+                intent = new Intent(this, WebPActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.guide_btn:
+                intent = new Intent(this, GuideFunctionActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.listview_group_btn:
+//                intent = new Intent(this, ListViewGroupActivity.class);
+//                startActivity(intent);
+                break;
+            case R.id.webview_btn:
+                intent = new Intent(this, MyWebViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.video_btn:
+                intent = new Intent(this, GuideVideoActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
