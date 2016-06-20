@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">我的应用程序</string>
     <string name="view_pager_guide">ViewPager引导页效果</string>
     <string name="retrofit_request">Retrofit网络请求</string>
     <string name="app_foreground">App是否在前台或者后台</string>
