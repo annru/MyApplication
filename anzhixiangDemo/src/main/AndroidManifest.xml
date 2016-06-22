@@ -32,17 +32,13 @@
         <activity android:name=".activity.MyCalendar4Activity" />
         <!-- <activity android:name=".activity.BannerActivity"/> -->
 
-        <activity android:name=".activity.WebPActivity"></activity>
-        <activity android:name=".activity.GuideFunctionActivity"></activity>
-        <activity android:name=".activity.MyWebViewActivity"></activity>
-        <activity android:name=".activity.GuideVideoActivity"></activity>
+        <activity android:name=".activity.WebPActivity"/>
+        <activity android:name=".activity.GuideFunctionActivity"/>
+        <activity android:name=".activity.MyWebViewActivity"/>
+        <activity android:name=".activity.GuideVideoActivity"/>
 
-        <activity android:name=".activity.WebPActivity">
-        </activity>
-        <activity android:name=".activity.GuideFunctionActivity">
-        </activity>
-        <activity android:name=".activity.MyWebViewActivity">
-        </activity>
+
+
         <activity android:name=".base.BaseActivity">
         </activity>
     </application>
