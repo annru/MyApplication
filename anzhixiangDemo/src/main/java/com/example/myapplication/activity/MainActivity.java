@@ -20,6 +20,7 @@ import com.example.myapplication.activity.calendar.MyCalendar4Activity;
 import com.example.myapplication.activity.calendar.MyCalendarActivity;
 import com.example.myapplication.activity.guide.GuideActivity;
 import com.example.myapplication.activity.guide.GuideVideoActivity;
+import com.example.myapplication.activity.listview.RecyclerViewActivity;
 import com.example.myapplication.activity.mvp.RetrofitActivity;
 import com.example.myapplication.activity.webview.MyWebViewActivity;
 import com.jungly.gridpasswordview.GridPasswordView;
