@@ -1,4 +1,4 @@
-package com.example.myapplication.activity;
+package com.example.myapplication.activity.guide;
 
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;

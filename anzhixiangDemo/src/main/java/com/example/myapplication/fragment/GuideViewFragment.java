@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
-import com.example.myapplication.activity.GuideActivity;
+import com.example.myapplication.activity.guide.GuideActivity;
 import com.example.myapplication.base.BaseFragment;
 
 import butterknife.ButterKnife;

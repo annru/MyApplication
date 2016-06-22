@@ -1,4 +1,4 @@
-package com.example.myapplication.activity;
+package com.example.myapplication.activity.guide;
 
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
