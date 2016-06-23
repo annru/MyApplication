@@ -12,6 +12,8 @@ import android.widget.ListView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
+import com.example.myapplication.fragment.ArchitectureFragment;
+import com.example.myapplication.fragment.DialogFragment;
 import com.example.myapplication.fragment.GuideViewFragment;
 import com.example.myapplication.fragment.MainFragment;
 
@@ -32,6 +34,8 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
 
     private FragmentManager mFragmentManager;
     private GuideViewFragment guideViewFragment;
+    private ArchitectureFragment architectureFragment;
+    private DialogFragment dialogFragment;
     private MainFragment mainFragment;
 
     @Override
@@ -73,8 +77,20 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
             case 2:
                 break;
             case 3:
+                if (null == architectureFragment) {
+                    architectureFragment = new ArchitectureFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout, architectureFragment).commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout, architectureFragment).commit();
+                }
                 break;
             case 4:
+                if (null == dialogFragment) {
+                    dialogFragment = new DialogFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout, dialogFragment).commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout, dialogFragment).commit();
+                }
                 break;
         }
     }

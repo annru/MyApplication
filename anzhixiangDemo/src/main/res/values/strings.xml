@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">我的应用程序</string>
+    <string name="app_name">AzxDemo</string>
     <string name="view_pager_guide">ViewPager引导页效果</string>
     <string name="retrofit_request">Retrofit网络请求</string>
     <string name="app_foreground">App是否在前台或者后台</string>
@@ -38,5 +38,7 @@
 
     <string name="drawer_open">打开</string>
     <string name="drawer_close">关闭</string>
+    <string name="retrofit">retrofit使用</string>
+    <string name="dialog">dialog使用</string>
 
 </resources>

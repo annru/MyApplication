@@ -1,10 +1,10 @@
 package com.example.myapplication.activity.mvp;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.myapplication.R;
+import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.model.APIService;
 import com.example.myapplication.model.Repo;
 
@@ -22,7 +22,7 @@ import retrofit.Retrofit;
  * Retrofit网络请求示例
  */
 
-public class RetrofitActivity extends AppCompatActivity {
+public class RetrofitActivity extends BaseActivity {
     private static final String TAG = "RetrofitActivity";
 
     @Override
@@ -78,7 +78,6 @@ public class RetrofitActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
