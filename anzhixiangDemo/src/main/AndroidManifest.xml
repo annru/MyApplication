@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+          package="com.example.myapplication">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
 
     <application
         android:name=".base.MyApplication"
@@ -15,28 +19,50 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--腾讯bugly 异常上报平台配置**********开始**********-->
+        <!-- 配置APP ID -->
+        <meta-data
+            android:name="BUGLY_APPID"
+            android:value="6da26e01e9"/>
+
+        <!-- 配置APP版本号 -->
+        <meta-data
+            android:name="BUGLY_APP_VERSION"
+            android:value="1.0"/>
+
+        <!-- 配置APP渠道号 -->
+        <meta-data
+            android:name="BUGLY_APP_CHANNEL"
+            android:value="anzhixiang"/>
+
+        <!-- 配置Bugly调试模式（true或者false）-->
+        <meta-data
+            android:name="BUGLY_ENABLE_DEBUG"
+            android:value="true"/>
+        <!--腾讯bugly 异常上报平台配置**********结束*********-->
+
         <activity android:name=".activity.DrawerLayoutActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.guide.GuideActivity" />
-        <activity android:name=".activity.mvp.RetrofitActivity" />
-        <activity android:name=".activity.listview.RecyclerViewActivity" />
-        <activity android:name=".activity.GridPasswordActivity" />
-        <activity android:name=".activity.MyTabActivity" />
-        <activity android:name=".activity.calendar.MyCalendarActivity" />
+        <activity android:name=".activity.guide.GuideActivity"/>
+        <activity android:name=".activity.mvp.RetrofitActivity"/>
+        <activity android:name=".activity.listview.RecyclerViewActivity"/>
+        <activity android:name=".activity.GridPasswordActivity"/>
+        <activity android:name=".activity.MyTabActivity"/>
+        <activity android:name=".activity.calendar.MyCalendarActivity"/>
         <!-- <activity android:name=".activity.MyCalendar2Activity"/> -->
-        <activity android:name=".activity.calendar.MyCalendar3Activity" />
-        <activity android:name=".activity.calendar.MyCalendar4Activity" />
+        <activity android:name=".activity.calendar.MyCalendar3Activity"/>
+        <activity android:name=".activity.calendar.MyCalendar4Activity"/>
         <!-- <activity android:name=".activity.BannerActivity"/> -->
 
-        <activity android:name=".activity.WebPActivity" />
-        <activity android:name=".activity.GuideFunctionActivity" />
-        <activity android:name=".activity.webview.MyWebViewActivity" />
-        <activity android:name=".activity.guide.GuideVideoActivity" />
+        <activity android:name=".activity.WebPActivity"/>
+        <activity android:name=".activity.GuideFunctionActivity"/>
+        <activity android:name=".activity.webview.MyWebViewActivity"/>
+        <activity android:name=".activity.guide.GuideVideoActivity"/>
 
     </application>
 
