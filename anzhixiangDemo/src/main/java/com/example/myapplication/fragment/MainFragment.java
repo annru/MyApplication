@@ -15,8 +15,6 @@ import com.example.myapplication.base.BaseFragment;
 public class MainFragment extends BaseFragment {
 
 
-
-
     public MainFragment() {
         // Required empty public constructor
     }
@@ -34,6 +32,13 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        testCrash();
+    }
+
+    private void testCrash() {
+        for (int i = 5; i <= 0; i--) {
+            System.out.println("打印:"+5 / i);
+        }
     }
 
 
