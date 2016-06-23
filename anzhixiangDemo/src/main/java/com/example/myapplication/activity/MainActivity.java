@@ -15,6 +15,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.calendar.MyCalendar3Activity;
+import com.example.myapplication.activity.calendar.MyCalendar4Activity;
+import com.example.myapplication.activity.calendar.MyCalendarActivity;
+import com.example.myapplication.activity.guide.GuideActivity;
+import com.example.myapplication.activity.guide.GuideVideoActivity;
+import com.example.myapplication.activity.listview.RecyclerViewActivity;
+import com.example.myapplication.activity.mvp.RetrofitActivity;
+import com.example.myapplication.activity.webview.MyWebViewActivity;
 import com.jungly.gridpasswordview.GridPasswordView;
 
 import butterknife.Bind;
@@ -66,6 +74,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.webview_btn)
     Button webviewBtn;
 
+
+    @Bind(R.id.video_btn)
+    Button videoBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         guideBtn.setOnClickListener(this);
         listviewGroupBtn.setOnClickListener(this);
         webviewBtn.setOnClickListener(this);
+        videoBtn.setOnClickListener(this);
 
     }
 
@@ -155,6 +168,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.webview_btn:
                 intent = new Intent(this, MyWebViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.video_btn:
+                intent = new Intent(this, GuideVideoActivity.class);
                 startActivity(intent);
                 break;
         }

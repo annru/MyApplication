@@ -18,7 +18,7 @@ import cn.lankton.flowlayout.FlowLayout;
 
 public class HomeActivity extends AppCompatActivity {
 
-    @Bind(R.id.flow_layout)
+//    @Bind(R.id.flow_layout)
     FlowLayout flowLayout;
 
     private String[] texts;
@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+//        setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         texts = getResources().getStringArray(R.array.home_tags);
         crateTagView();

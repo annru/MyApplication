@@ -34,13 +34,13 @@
     </string-array>
 
     <declare-styleable name="PasswordInputView">
-        <attr name="borderWidth" format="dimension"/>
-        <attr name="borderColor" format="color"/>
-        <attr name="borderRadius" format="dimension"/>
-        <attr name="passwordLength" format="integer"/>
-        <attr name="passwordWidth" format="dimension"/>
-        <attr name="passwordColor" format="color"/>
-        <attr name="passwordRadius" format="dimension"/>
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="borderRadius" format="dimension" />
+        <attr name="passwordLength" format="integer" />
+        <attr name="passwordWidth" format="dimension" />
+        <attr name="passwordColor" format="color" />
+        <attr name="passwordRadius" format="dimension" />
     </declare-styleable>
 
 
@@ -54,6 +54,8 @@
         <item>ViewPager引导页</item>
         <item>RecyclerView</item>
         <item>日历</item>
+        <item>框架及架构</item>
+        <item>对话框(Dialog)</item>
     </string-array>
 
 </resources>

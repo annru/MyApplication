@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,94 +18,100 @@
             android:id="@+id/view_pager_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/view_pager_guide"/>
+            android:text="@string/view_pager_guide" />
 
         <Button
             android:id="@+id/retrofit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/retrofit_request"/>
+            android:text="@string/retrofit_request" />
 
         <Button
             android:id="@+id/address_book_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/address_book"/>
+            android:text="@string/address_book" />
 
         <Button
             android:id="@+id/recycler_view_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/recycler_view"/>
+            android:text="@string/recycler_view" />
 
         <Button
             android:id="@+id/grid_password_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/grid_password"/>
+            android:text="@string/grid_password" />
 
         <Button
             android:id="@+id/tab_fragment_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tab_fragment_button"/>
+            android:text="@string/tab_fragment_button" />
 
         <Button
             android:id="@+id/tab_calendar_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calendar"/>
+            android:text="@string/calendar" />
 
         <Button
             android:id="@+id/tab_calendar2_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="@string/calendar_2"/>
+            android:text="@string/calendar_2" />
 
 
         <Button
             android:id="@+id/tab_calendar3_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calendar_3"/>
+            android:text="@string/calendar_3" />
 
         <Button
             android:id="@+id/tab_calendar4_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calendar_4"/>
+            android:text="@string/calendar_4" />
 
 
         <Button
             android:id="@+id/image_play_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/image_play"/>
+            android:text="@string/image_play" />
 
         <Button
             android:id="@+id/webp_test_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/webp_img"/>
+            android:text="@string/webp_img" />
 
         <Button
             android:id="@+id/guide_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/guide_btn"/>
+            android:text="@string/guide_btn" />
 
         <Button
             android:id="@+id/listview_group_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/guide_btn"/>
+            android:text="@string/guide_btn" />
 
         <Button
             android:id="@+id/webview_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/webview_btn"/>
+            android:text="@string/webview_btn" />
+
+        <Button
+            android:id="@+id/video_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/video_btn" />
 
     </LinearLayout>
 </ScrollView>
