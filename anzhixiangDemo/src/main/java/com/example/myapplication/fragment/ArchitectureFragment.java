@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.guide.GuideActivity;
 import com.example.myapplication.activity.mvp.RetrofitActivity;
+import com.example.myapplication.activity.mvp.UserActivity;
 import com.example.myapplication.base.BaseFragment;
 
 import butterknife.ButterKnife;
@@ -36,10 +37,20 @@ public class ArchitectureFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-    @OnClick(R.id.retrofit_btn)
+    @OnClick({R.id.retrofit_btn, R.id.mvp_btn})
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getActivity(), RetrofitActivity.class);
-        startActivity(intent);
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.retrofit_btn:
+                intent = new Intent(getActivity(), RetrofitActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.mvp_btn:
+                intent = new Intent(getActivity(), UserActivity.class);
+                startActivity(intent);
+                break;
+        }
+
     }
 }

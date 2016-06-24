@@ -38,7 +38,8 @@ public class MyApplication extends Application implements AppForegroundStateMana
          ● 自定义日志将会在Logcat中输出。
          建议在测试阶段建议设置成true，发布时设置为false。
          */
-        CrashReport.initCrashReport(getApplicationContext(), APP_ID, true);
+//        CrashReport.initCrashReport(getApplicationContext(), APP_ID, true);
+//        CrashReport.initCrashReport(getApplicationContext());
     }
 
     @Override
