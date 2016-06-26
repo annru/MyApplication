@@ -32,7 +32,6 @@ public class GuideViewFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 
     @OnClick(R.id.guide_btn)
@@ -40,5 +39,11 @@ public class GuideViewFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View v) {
         Intent intent = new Intent(getActivity(), GuideActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }

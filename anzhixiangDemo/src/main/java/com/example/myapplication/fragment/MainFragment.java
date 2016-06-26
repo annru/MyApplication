@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
-import com.facebook.stetho.common.LogRedirector;
-import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * A fragment with a Google +1 button.
@@ -40,7 +38,6 @@ public class MainFragment extends BaseFragment {
         Log.i(TAG, "onResume");
 //        CrashReport.testJavaCrash();
     }
-
 
 
 
