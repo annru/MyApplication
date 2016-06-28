@@ -99,5 +99,6 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
