@@ -40,6 +40,7 @@
     <string name="drawer_close">关闭</string>
     <string name="retrofit">retrofit使用</string>
     <string name="mvp">mvp模式使用</string>
+    <string name="mvp2">mvp模式使用(二)</string>
     <string name="dialog">dialog使用</string>
 
     <string name="hello_world">Hello world!</string>
@@ -51,5 +52,6 @@
     <string name="lastname">LastName:</string>
     <string name="sharesdk">shareSdk分享</string>
     <string name="share">分享</string>
+    <string name="login">登录</string>
 
 </resources>

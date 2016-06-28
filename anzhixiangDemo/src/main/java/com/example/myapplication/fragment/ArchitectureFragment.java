@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.LoginActivity;
 import com.example.myapplication.activity.mvp.RetrofitActivity;
 import com.example.myapplication.activity.mvp.UserActivity;
 import com.example.myapplication.base.BaseFragment;
@@ -42,7 +43,7 @@ public class ArchitectureFragment extends BaseFragment implements View.OnClickLi
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.retrofit_btn, R.id.mvp_btn})
+    @OnClick({R.id.retrofit_btn, R.id.mvp_btn, R.id.mvp_btn2})
     @Override
     public void onClick(View v) {
         Intent intent;
@@ -53,6 +54,10 @@ public class ArchitectureFragment extends BaseFragment implements View.OnClickLi
                 break;
             case R.id.mvp_btn:
                 intent = new Intent(getActivity(), UserActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.mvp_btn2:
+                intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 break;
         }
