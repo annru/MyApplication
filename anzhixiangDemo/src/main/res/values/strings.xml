@@ -49,5 +49,7 @@
     <string name="id">ID:</string>
     <string name="firstname">FirstName:</string>
     <string name="lastname">LastName:</string>
+    <string name="sharesdk">shareSdk分享</string>
+    <string name="share">分享</string>
 
 </resources>

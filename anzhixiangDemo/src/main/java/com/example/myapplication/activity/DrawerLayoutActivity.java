@@ -16,6 +16,7 @@ import com.example.myapplication.fragment.ArchitectureFragment;
 import com.example.myapplication.fragment.DialogFragment;
 import com.example.myapplication.fragment.GuideViewFragment;
 import com.example.myapplication.fragment.MainFragment;
+import com.example.myapplication.fragment.ShareFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,6 +37,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
     private GuideViewFragment guideViewFragment;
     private ArchitectureFragment architectureFragment;
     private DialogFragment dialogFragment;
+    private ShareFragment shareFragment;
     private MainFragment mainFragment;
 
     @Override
@@ -53,7 +55,8 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.beginTransaction().add(R.id.content_layout, mainFragment).commit();
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
+                drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         actionBarDrawerToggle.syncState();
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
     }
@@ -67,9 +70,11 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
             case 0:
                 if (null == guideViewFragment) {
                     guideViewFragment = new GuideViewFragment();
-                    mFragmentManager.beginTransaction().add(R.id.content_layout, guideViewFragment).commit();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout,
+                            guideViewFragment).commit();
                 } else {
-                    mFragmentManager.beginTransaction().replace(R.id.content_layout, guideViewFragment).commit();
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            guideViewFragment).commit();
                 }
                 break;
             case 1:
@@ -79,17 +84,31 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
             case 3:
                 if (null == architectureFragment) {
                     architectureFragment = new ArchitectureFragment();
-                    mFragmentManager.beginTransaction().add(R.id.content_layout, architectureFragment).commit();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout,
+                            architectureFragment).commit();
                 } else {
-                    mFragmentManager.beginTransaction().replace(R.id.content_layout, architectureFragment).commit();
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            architectureFragment).commit();
                 }
                 break;
             case 4:
                 if (null == dialogFragment) {
                     dialogFragment = new DialogFragment();
-                    mFragmentManager.beginTransaction().add(R.id.content_layout, dialogFragment).commit();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout, dialogFragment)
+                            .commit();
                 } else {
-                    mFragmentManager.beginTransaction().replace(R.id.content_layout, dialogFragment).commit();
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            dialogFragment).commit();
+                }
+                break;
+            case 5:
+                if (null == shareFragment) {
+                    shareFragment = new ShareFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout, shareFragment)
+                            .commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            shareFragment).commit();
                 }
                 break;
         }
