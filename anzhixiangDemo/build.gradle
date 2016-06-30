@@ -4,6 +4,10 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+    dataBinding{
+        enabled = true
+    }
+
 
     defaultConfig {
         applicationId "com.example.myapplication"
@@ -57,5 +61,7 @@ dependencies {
     //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
 
     compile 'com.alipay.euler:andfix:0.3.1'
+
+
 
 }
