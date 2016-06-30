@@ -46,7 +46,7 @@ public class MainFragment extends BaseFragment {
         Log.i(TAG, "onResume");
 //        CrashReport.testJavaCrash();
 //        showAgreementDialog("AndFix热修复测试，这是替换前的内容");
-        showAgreementDialog("AndFix热修复测试，这是替换后的内容，看到这个文字提示说明热修复测试成功");
+//        showAgreementDialog("AndFix热修复测试，这是替换后的内容，看到这个文字提示说明热修复测试成功");
     }
 
 

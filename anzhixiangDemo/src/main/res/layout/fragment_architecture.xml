@@ -14,10 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mvp" />
+
     <Button
         android:id="@+id/mvp_btn2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mvp2" />
+
+    <Button
+        android:id="@+id/mvvm_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mvvm" />
 
 </LinearLayout>

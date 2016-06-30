@@ -41,6 +41,7 @@
     <string name="retrofit">retrofit使用</string>
     <string name="mvp">mvp模式使用</string>
     <string name="mvp2">mvp模式使用(二)</string>
+    <string name="mvvm">mvvm模式使用</string>
     <string name="dialog">dialog使用</string>
 
     <string name="hello_world">Hello world!</string>
