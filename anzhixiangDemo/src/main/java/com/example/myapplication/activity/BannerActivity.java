@@ -11,9 +11,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -31,9 +33,11 @@ public class BannerActivity extends AppCompatActivity implements ViewPager.OnPag
     @Bind(R.id.ll_dot_group)
     LinearLayout ll;
 
-    private List<SimpleDraweeView> imagelist;
+    private List<ImageView> imagelist;
     private int preEnablePositon = 0; // 前一个被选中的点的索引位置 默认情况下为0
     private boolean isStop = false;  //是否停止子线程  不会停止
+    private String[] urlArray = new String[]{"https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/fresco-logo.png", "http://img5.imgtn.bdimg.com/it/u=1478257864,2882073929&fm=21&gp=0.jpg", "http://pic38.nipic.com/20140215/12359647_224250202132_2.jpg", "http://b.zol-img.com.cn/desk/bizhi/image/7/1920x1200/1457407066556.jpg"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +77,16 @@ public class BannerActivity extends AppCompatActivity implements ViewPager.OnPag
 
 
         imagelist = new ArrayList<>();
-        int[] imageIDs = {R.mipmap.a, R.mipmap.b, R.mipmap.c,
-                R.mipmap.d, R.mipmap.e,};
+//        int[] imageIDs = {R.mipmap.a, R.mipmap.b, R.mipmap.c,
+//                R.mipmap.d, R.mipmap.e,};
 
-        SimpleDraweeView iv;
+        ImageView iv;
         View view;
         LayoutParams params;
-        for (int id : imageIDs) {
-            iv = new SimpleDraweeView(this);
-            iv.setBackgroundResource(id);
+        for (String url : urlArray) {
+            iv = new ImageView(this);
+            Glide.with(this).load(url).placeholder(R.mipmap.ic_fill_bg).into(iv);
+//            iv.setBackgroundResource(id);
             imagelist.add(iv);
 
             // 每循环一次添加一个点到现形布局中
@@ -199,13 +204,10 @@ public class BannerActivity extends AppCompatActivity implements ViewPager.OnPag
 
         @Override
         public void onTick(long millisUntilFinished) {
-//            vertifyView.setText((millisUntilFinished / 1000) + "秒后可重发");
         }
 
         @Override
         public void onFinish() {
-//            vertifyView.setEnabled(true);
-//            vertifyView.setText("获取验证码");
             myHandler.sendEmptyMessageAtTime(0, 0);
         }
     };
