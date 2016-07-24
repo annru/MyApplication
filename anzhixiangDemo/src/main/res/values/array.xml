@@ -57,6 +57,7 @@
         <item>框架及架构</item>
         <item>对话框(Dialog)</item>
         <item>分享(ShareSdk)</item>
+        <item>文本显示（TextView）</item>
     </string-array>
 
 </resources>
