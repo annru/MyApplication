@@ -86,7 +86,8 @@
         <!-- ShareSdk分享   ****************配置结束*************** -->
 
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".mvvm.MvvmDemoActivity"/>
+        <activity android:name=".mvvm.MvvmDemoActivity" />
+        <activity android:name=".activity.BannerActivity" />
     </application>
 
 </manifest>

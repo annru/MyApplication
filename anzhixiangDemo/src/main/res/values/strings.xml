@@ -53,6 +53,7 @@
     <string name="lastname">LastName:</string>
     <string name="sharesdk">shareSdk分享</string>
     <string name="textview">文本显示</string>
+    <string name="gilde">Glide图片加载框架</string>
     <string name="share">分享</string>
     <string name="login">登录</string>
 

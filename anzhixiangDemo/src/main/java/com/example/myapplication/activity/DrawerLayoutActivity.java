@@ -15,6 +15,7 @@ import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.fragment.ArchitectureFragment;
 import com.example.myapplication.fragment.DialogFragment;
 import com.example.myapplication.fragment.GuideViewFragment;
+import com.example.myapplication.fragment.ImageSyncLoadFragment;
 import com.example.myapplication.fragment.MainFragment;
 import com.example.myapplication.fragment.ShareFragment;
 
@@ -38,6 +39,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
     private ArchitectureFragment architectureFragment;
     private DialogFragment dialogFragment;
     private ShareFragment shareFragment;
+    private ImageSyncLoadFragment imageSyncLoadFragment;
     private MainFragment mainFragment;
 
     @Override
@@ -119,6 +121,13 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                 } else {
                     mFragmentManager.beginTransaction().replace(R.id.content_layout,
                             shareFragment).commit();
+                if (null == imageSyncLoadFragment) {
+                    imageSyncLoadFragment = new ImageSyncLoadFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout, imageSyncLoadFragment)
+                            .commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            imageSyncLoadFragment).commit();
                 }
                 break;
         }
