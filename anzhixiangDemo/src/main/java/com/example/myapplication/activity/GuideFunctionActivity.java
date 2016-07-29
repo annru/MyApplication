@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.R;
+import com.example.myapplication.base.BaseActivity;
 
 import net.frederico.showtipsview.ShowTipsBuilder;
 import net.frederico.showtipsview.ShowTipsView;
@@ -14,7 +15,7 @@ import net.frederico.showtipsview.ShowTipsViewInterface;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class GuideFunctionActivity extends AppCompatActivity {
+public class GuideFunctionActivity extends BaseActivity {
 
     @Bind(R.id.guide_test_btn)
     Button guideTestBtn;

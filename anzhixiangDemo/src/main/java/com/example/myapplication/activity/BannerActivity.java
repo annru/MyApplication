@@ -17,6 +17,7 @@ import android.widget.LinearLayout.LayoutParams;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
+import com.example.myapplication.base.BaseActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class BannerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class BannerActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
 
     @Bind(R.id.view_pager)
     ViewPager viewPager;

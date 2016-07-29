@@ -10,6 +10,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyActivityManager.getInstance().addActivity(this);
+        System.out.println("打印Activity名称:" + this.getLocalClassName());
     }
 
     @Override

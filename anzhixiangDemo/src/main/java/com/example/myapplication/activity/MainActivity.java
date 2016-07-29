@@ -23,12 +23,13 @@ import com.example.myapplication.activity.guide.GuideVideoActivity;
 import com.example.myapplication.activity.listview.RecyclerViewActivity;
 import com.example.myapplication.activity.mvp.RetrofitActivity;
 import com.example.myapplication.activity.webview.MyWebViewActivity;
+import com.example.myapplication.base.BaseActivity;
 import com.jungly.gridpasswordview.GridPasswordView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.view_pager_btn)
     Button viewPagerBtn;
 
