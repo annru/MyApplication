@@ -115,6 +115,13 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                 }
                 break;
             case 6:
+                if (null == shareFragment) {
+                    shareFragment = new ShareFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout, shareFragment)
+                            .commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            shareFragment).commit();
                 if (null == imageSyncLoadFragment) {
                     imageSyncLoadFragment = new ImageSyncLoadFragment();
                     mFragmentManager.beginTransaction().add(R.id.content_layout, imageSyncLoadFragment)
