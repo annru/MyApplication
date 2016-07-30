@@ -1,2 +1,1 @@
-include ':anzhixiangDemo'
-include ':app'
+include ':anzhixiangDemo', ':AndFixDemo'
