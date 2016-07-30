@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 
 import com.example.myapplication.R;
+import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.fragment.Tab1Fragment;
 import com.example.myapplication.fragment.Tab2Fragment;
 import com.example.myapplication.fragment.Tab3Fragment;
@@ -17,7 +18,7 @@ import com.example.myapplication.fragment.Tab4Fragment;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MyTabActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MyTabActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     @Bind(R.id.content_layout)
     FrameLayout contentLayout;

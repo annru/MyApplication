@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
+import com.example.myapplication.base.MyActivityManager;
 import com.example.myapplication.fragment.ArchitectureFragment;
 import com.example.myapplication.fragment.DialogFragment;
 import com.example.myapplication.fragment.GuideViewFragment;
@@ -140,7 +141,8 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-        android.os.Process.killProcess(android.os.Process.myPid());
+        MyActivityManager.getInstance().testPrintln();
+//        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
 }

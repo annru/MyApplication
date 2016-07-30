@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.mvp2.LoginPresenter;
 import com.example.myapplication.mvp2.LoginPresenterImpl;
 import com.example.myapplication.mvp2.LoginView;
@@ -27,7 +28,7 @@ import butterknife.OnClick;
  * 5 LoginPresenter再把结果返回给view层的Activity，最后activity显示结果
  */
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends BaseActivity implements LoginView {
 
 
     @Bind(R.id.username_edit)
