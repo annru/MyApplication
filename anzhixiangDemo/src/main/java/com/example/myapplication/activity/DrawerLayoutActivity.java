@@ -121,15 +121,18 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                 } else {
                     mFragmentManager.beginTransaction().replace(R.id.content_layout,
                             shareFragment).commit();
-                if (null == imageSyncLoadFragment) {
-                    imageSyncLoadFragment = new ImageSyncLoadFragment();
-                    mFragmentManager.beginTransaction().add(R.id.content_layout, imageSyncLoadFragment)
-                            .commit();
-                } else {
-                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
-                            imageSyncLoadFragment).commit();
+                    if (null == imageSyncLoadFragment) {
+                        imageSyncLoadFragment = new ImageSyncLoadFragment();
+                        mFragmentManager.beginTransaction().add(R.id.content_layout,
+                                imageSyncLoadFragment)
+
+                                .commit();
+                    } else {
+                        mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                                imageSyncLoadFragment).commit();
+                    }
+                    break;
                 }
-                break;
         }
     }
 
@@ -139,4 +142,5 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
         ButterKnife.unbind(this);
         android.os.Process.killProcess(android.os.Process.myPid());
     }
+
 }
