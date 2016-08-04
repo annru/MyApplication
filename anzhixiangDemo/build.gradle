@@ -4,9 +4,9 @@ android {
 
     signingConfigs {
         config {
-            keyAlias '安志翔'
+            keyAlias '李军'
             keyPassword '123456'
-            storeFile file('F:\\mykeystore\\anzhixiang')
+            storeFile file('E:/keystore/lj')
             storePassword '123456'
         }
     }
