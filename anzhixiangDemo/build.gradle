@@ -6,7 +6,7 @@ android {
         config {
             keyAlias '安志翔'
             keyPassword '123456'
-            storeFile file('E:/keystore/anzhixiang')
+            storeFile file('F:/mykeystore/anzhixiang')
             storePassword '123456'
         }
     }
