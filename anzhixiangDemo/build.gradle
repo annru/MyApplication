@@ -1,10 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    signingConfigs {
+        config {
+            keyAlias '安志翔'
+            keyPassword '123456'
+            storeFile file('E:/keystore/anzhixiang')
+            storePassword '123456'
+        }
+    }
+
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 
@@ -33,6 +43,7 @@ android {
             manifestPlaceholders = [APP_NAME: "我的程序生产"]
             applicationIdSuffix ".release"
             minifyEnabled false
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -66,7 +77,6 @@ dependencies {
 
     compile 'com.alipay.euler:andfix:0.3.1'
     compile 'com.github.bumptech.glide:glide:3.5.2'
-
 
 
 }
