@@ -8,6 +8,10 @@ android {
         enabled = true
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
 
     defaultConfig {
         applicationId "com.example.myapplication"
