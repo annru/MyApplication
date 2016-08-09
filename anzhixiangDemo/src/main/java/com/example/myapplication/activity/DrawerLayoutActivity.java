@@ -19,6 +19,7 @@ import com.example.myapplication.fragment.GuideViewFragment;
 import com.example.myapplication.fragment.ImageSyncLoadFragment;
 import com.example.myapplication.fragment.MainFragment;
 import com.example.myapplication.fragment.ShareFragment;
+import com.igexin.sdk.PushManager;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -47,6 +48,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_layout);
+        PushManager.getInstance().initialize(this.getApplicationContext());
         ButterKnife.bind(this);
         listView.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, getResources()
                 .getStringArray(R.array.drawer_item)));
