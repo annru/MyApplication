@@ -26,3 +26,6 @@
 -keepclasseswithmembernames class * {
     native <methods>;
 }
+
+-dontwarn com.igexin.**
+-keep class com.igexin.**{*;}
