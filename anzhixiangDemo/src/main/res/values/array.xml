@@ -59,6 +59,7 @@
         <item>分享(ShareSdk)</item>
         <item>文本显示（TextView）</item>
         <item>图片异步加载</item>
+        <item>Drawable图片调色</item>
     </string-array>
 
 </resources>

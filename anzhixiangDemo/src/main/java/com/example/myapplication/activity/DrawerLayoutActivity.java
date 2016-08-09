@@ -15,6 +15,7 @@ import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.base.MyActivityManager;
 import com.example.myapplication.fragment.ArchitectureFragment;
 import com.example.myapplication.fragment.DialogFragment;
+import com.example.myapplication.fragment.DrawableFragment;
 import com.example.myapplication.fragment.GuideViewFragment;
 import com.example.myapplication.fragment.ImageSyncLoadFragment;
 import com.example.myapplication.fragment.MainFragment;
@@ -42,6 +43,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
     private DialogFragment dialogFragment;
     private ShareFragment shareFragment;
     private ImageSyncLoadFragment imageSyncLoadFragment;
+    private DrawableFragment drawableFragment;
     private MainFragment mainFragment;
 
     @Override
@@ -53,6 +55,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
         listView.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, getResources()
                 .getStringArray(R.array.drawer_item)));
         initFragment();
+        testDebug();
     }
 
     private void initFragment() {
@@ -136,6 +139,15 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                     }
                     break;
                 }
+            case 8:
+                if (null == drawableFragment) {
+                    drawableFragment = new DrawableFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout, drawableFragment)
+                            .commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            drawableFragment).commit();
+                }
         }
     }
 
@@ -145,6 +157,12 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
         ButterKnife.unbind(this);
         MyActivityManager.getInstance().testPrintln();
 //        android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    private void testDebug() {
+        for (int i = 0; i < 20; i++) {
+            System.out.println("打印" + i);
+        }
     }
 
 }
