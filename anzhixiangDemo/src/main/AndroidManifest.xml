@@ -55,7 +55,7 @@
             android:name="com.example.myapplication.receiver.PushDemoReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}"/>
+                <action android:name="com.igexin.sdk.action.uDxaQYSBzl8TkDG5rAVed2"/>
             </intent-filter>
         </receiver>
 
@@ -63,13 +63,13 @@
         <!-- 配置的第三方参数属性 -->
         <meta-data
             android:name="PUSH_APPID"
-            android:value="lwJzpXuizE6na3xiXVT5p7"/> <!-- 替换为第三方应用的APPID -->
+            android:value="uDxaQYSBzl8TkDG5rAVed2"/> <!-- 替换为第三方应用的APPID -->
         <meta-data
             android:name="PUSH_APPKEY"
-            android:value="LkeWy9qBqq7HKih3ODeMYA"/> <!-- 替换为第三方应用的APPKEY -->
+            android:value="m39Dt8DVNK9yrnBlupiUw8"/> <!-- 替换为第三方应用的APPKEY -->
         <meta-data
             android:name="PUSH_APPSECRET"
-            android:value="1dCOa3hFrU6th80vSveKrA"/> <!-- 替换为第三方应用的APPSECRET -->
+            android:value="uF6A3g7YV88LMeYAZpHxk3"/> <!-- 替换为第三方应用的APPSECRET -->
         <!-- 配置SDK核心服务 -->
         <service
             android:name="com.igexin.sdk.PushService"
