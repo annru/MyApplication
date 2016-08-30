@@ -1,5 +1,6 @@
 package com.example.myapplication.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.listview.RecyclerViewActivity;
 import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.base.MyActivityManager;
 import com.example.myapplication.fragment.ArchitectureFragment;
@@ -84,6 +86,8 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                 }
                 break;
             case 1:
+                Intent intent = new Intent(this, RecyclerViewActivity.class);
+                startActivity(intent);
                 break;
             case 2:
                 break;

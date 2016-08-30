@@ -27,6 +27,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     private List<DateModel> mData;
     private OnLoadMoreDataListener mOnLoadMoreDataListener;
+    private MyRecyclerViewAdapter adapter;
 
 
     @Override
@@ -37,7 +38,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         initData();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter();
+        adapter = new MyRecyclerViewAdapter();
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new OnRecyclerViewItemClickListener() {
             @Override
@@ -80,9 +81,10 @@ public class RecyclerViewActivity extends AppCompatActivity {
             @Override
             public void onLoadMoreData() {
                 Log.i("onLoadMoreData", "加载更多回调");
+                loadMoreData();
             }
         });
-//        setFooterView(recyclerView, adapter);
+        setFooterView(recyclerView, adapter);
     }
 
 
@@ -205,6 +207,15 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 dm.setTitle(i + "测试数据");
             mData.add(dm);
         }
+    }
+
+    private void loadMoreData() {
+        for (int i = 0; i < 10; i++) {
+            DateModel dm = new DateModel();
+            dm.setTitle(i + "这是更多数据");
+            mData.add(dm);
+        }
+        adapter.notifyDataSetChanged();
     }
 
 
