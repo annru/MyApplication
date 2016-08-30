@@ -1,6 +1,5 @@
 package com.example.myapplication.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -12,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.activity.listview.RecyclerViewActivity;
 import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.base.MyActivityManager;
 import com.example.myapplication.fragment.ArchitectureFragment;
@@ -21,6 +19,7 @@ import com.example.myapplication.fragment.DrawableFragment;
 import com.example.myapplication.fragment.GuideViewFragment;
 import com.example.myapplication.fragment.ImageSyncLoadFragment;
 import com.example.myapplication.fragment.MainFragment;
+import com.example.myapplication.fragment.RecyclerViewFragment;
 import com.example.myapplication.fragment.ShareFragment;
 
 import butterknife.Bind;
@@ -40,6 +39,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
 
     private FragmentManager mFragmentManager;
     private GuideViewFragment guideViewFragment;
+    private RecyclerViewFragment recyclerViewFragment;
     private ArchitectureFragment architectureFragment;
     private DialogFragment dialogFragment;
     private ShareFragment shareFragment;
@@ -86,8 +86,14 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                 }
                 break;
             case 1:
-                Intent intent = new Intent(this, RecyclerViewActivity.class);
-                startActivity(intent);
+                if (null == recyclerViewFragment) {
+                    recyclerViewFragment = new RecyclerViewFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout,
+                            recyclerViewFragment).commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            recyclerViewFragment).commit();
+                }
                 break;
             case 2:
                 break;
@@ -133,7 +139,6 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                         imageSyncLoadFragment = new ImageSyncLoadFragment();
                         mFragmentManager.beginTransaction().add(R.id.content_layout,
                                 imageSyncLoadFragment)
-
                                 .commit();
                     } else {
                         mFragmentManager.beginTransaction().replace(R.id.content_layout,
