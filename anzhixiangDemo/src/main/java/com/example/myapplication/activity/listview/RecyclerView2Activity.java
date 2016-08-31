@@ -52,6 +52,12 @@ public class RecyclerView2Activity extends BaseActivity {
 
     }
 
+
+    private View getFooterView() {
+        final ViewGroup nullParent = null;
+        return LayoutInflater.from(this).inflate(R.layout.recycler_view_footer, nullParent);
+    }
+
     private List<DataModel> initData() {
         List<DataModel> data = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
