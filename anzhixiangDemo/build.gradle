@@ -24,6 +24,7 @@ android {
 
 
     defaultConfig {
+        manifestPlaceholders = [label: "我的DEBUG"]
         applicationId "com.example.myapplication"
         minSdkVersion 16
         targetSdkVersion 23
@@ -31,18 +32,25 @@ android {
         versionName "1.0"
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
         }
+
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "lwJzpXuizE6na3xiXVT5p7",
+                GETUI_APP_KEY   : "LkeWy9qBqq7HKih3ODeMYA",
+                GETUI_APP_SECRET: "1dCOa3hFrU6th80vSveKrA",
+                PACKAGE_NAME    : applicationId
+        ]
     }
     buildTypes {
         debug {
-            manifestPlaceholders = [APP_NAME: "我的程序DEBUG"]
+            applicationIdSuffix '.debug'
         }
 
         release {
-            manifestPlaceholders = [APP_NAME: "我的程序生产"]
-            applicationIdSuffix ".release"
             minifyEnabled false
+            manifestPlaceholders = [label: "我的生产"]
             signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -77,7 +85,7 @@ dependencies {
 
     compile 'com.alipay.euler:andfix:0.3.1'
     compile 'com.github.bumptech.glide:glide:3.5.2'
-
+    compile 'com.getui:sdk:2.9.0.0'
 
 
 }
