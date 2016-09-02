@@ -33,6 +33,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
 import com.igexin.sdk.PushConsts;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.Tag;
