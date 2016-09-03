@@ -100,6 +100,7 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        System.out.println("快捷键的使用");
         context = this;
         isServiceRunning = true;
         clearBtn = (Button) findViewById(R.id.btn_clear);
@@ -129,7 +130,8 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
         // 从AndroidManifest.xml的meta-data中读取SDK配置信息
         String packageName = getApplicationContext().getPackageName();
         try {
-            ApplicationInfo appInfo = getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+            ApplicationInfo appInfo = getPackageManager().getApplicationInfo(packageName,
+                    PackageManager.GET_META_DATA);
             if (appInfo.metaData != null) {
                 appid = appInfo.metaData.getString("PUSH_APPID");
                 appsecret = appInfo.metaData.getString("PUSH_APPSECRET");
@@ -149,12 +151,14 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
         PackageManager pkgManager = getPackageManager();
         // 读写 sd card 权限非常重要, android6.0默认禁止的, 建议初始化之前就弹窗让用户赋予该权限
         boolean sdCardWritePermission =
-                pkgManager.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, getPackageName()) == PackageManager.PERMISSION_GRANTED;
+                pkgManager.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        getPackageName()) == PackageManager.PERMISSION_GRANTED;
 
 
         // read phone state用于获取 imei 设备信息
         boolean phoneSatePermission =
-                pkgManager.checkPermission(Manifest.permission.READ_PHONE_STATE, getPackageName()) == PackageManager.PERMISSION_GRANTED;
+                pkgManager.checkPermission(Manifest.permission.READ_PHONE_STATE, getPackageName()
+                ) == PackageManager.PERMISSION_GRANTED;
 
         if (Build.VERSION.SDK_INT >= 23 && !sdCardWritePermission || !phoneSatePermission) {
             requestPermission();
@@ -172,19 +176,23 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
     }
 
     private void requestPermission() {
-        ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE},
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
+                .WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE},
                 REQUEST_PERMISSION);
 
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[]
+            grantResults) {
         if (requestCode == REQUEST_PERMISSION) {
-            if ((grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
+            if ((grantResults.length == 2 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
                 PushManager.getInstance().initialize(this.getApplicationContext());
             } else {
                 Log.e("GetuiSdkDemo",
-                        "we highly recommend that you need to grant the special permissions before initializing the SDK, otherwise some "
+                        "we highly recommend that you need to grant the special permissions " +
+                                "before initializing the SDK, otherwise some "
                                 + "functions will not work");
                 PushManager.getInstance().initialize(this.getApplicationContext());
             }
@@ -234,7 +242,8 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
             }
         } else if (v == bindAliasBtn) {
             final EditText editText = new EditText(GetuiSdkDemoActivity.this);
-            new AlertDialog.Builder(GetuiSdkDemoActivity.this).setTitle(R.string.bind_alias).setView(editText)
+            new AlertDialog.Builder(GetuiSdkDemoActivity.this).setTitle(R.string.bind_alias)
+                    .setView(editText)
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                         @Override
@@ -242,8 +251,10 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
                             if (editText.getEditableText() != null) {
                                 String alias = editText.getEditableText().toString();
                                 if (alias != null && alias.length() > 0) {
-                                    PushManager.getInstance().bindAlias(GetuiSdkDemoActivity.this, alias);
-                                    System.out.println("bind alias:" + editText.getEditableText().toString());
+                                    PushManager.getInstance().bindAlias(GetuiSdkDemoActivity
+                                            .this, alias);
+                                    System.out.println("bind alias:" + editText.getEditableText()
+                                            .toString());
                                     return;
                                 }
                             }
@@ -251,7 +262,8 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
                     }).setNegativeButton(android.R.string.cancel, null).show();
         } else if (v == unbindAliasBtn) {
             final EditText editText = new EditText(GetuiSdkDemoActivity.this);
-            new AlertDialog.Builder(GetuiSdkDemoActivity.this).setTitle(R.string.unbind_alias).setView(editText)
+            new AlertDialog.Builder(GetuiSdkDemoActivity.this).setTitle(R.string.unbind_alias)
+                    .setView(editText)
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                         @Override
@@ -260,8 +272,10 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
                             String alias = editText.getEditableText().toString();
                             if (alias != null && alias.length() > 0) {
                                 // true为只解绑自己，false为解绑全部
-                                PushManager.getInstance().unBindAlias(GetuiSdkDemoActivity.this, alias, true);
-                                System.out.println("unbind alias:" + editText.getEditableText().toString());
+                                PushManager.getInstance().unBindAlias(GetuiSdkDemoActivity.this,
+                                        alias, true);
+                                System.out.println("unbind alias:" + editText.getEditableText()
+                                        .toString());
                                 return;
                             }
 
@@ -337,7 +351,8 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
                 // 测试addTag接口
                 final View view = new EditText(this);
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-                alertBuilder.setTitle("设置Tag").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                alertBuilder.setTitle("设置Tag").setNegativeButton("取消", new DialogInterface
+                        .OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
@@ -355,7 +370,8 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
                             tagParam[i] = t;
                         }
 
-                        int i = PushManager.getInstance().setTag(context, tagParam, System.currentTimeMillis() + "");
+                        int i = PushManager.getInstance().setTag(context, tagParam, System
+                                .currentTimeMillis() + "");
                         String text = "ERROR";
 
                         switch (i) {
@@ -425,7 +441,8 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
                 // 测试setSilentTime设置静默时间接口
                 final View view = LayoutInflater.from(this).inflate(R.layout.silent_setting, null);
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-                alertBuilder.setTitle("设置静默时间段").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                alertBuilder.setTitle("设置静默时间段").setNegativeButton("取消", new DialogInterface
+                        .OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
@@ -436,17 +453,23 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
 
                         try {
                             int beginHour = Integer.valueOf(String.valueOf(beginText.getText()));
-                            int durationHour = Integer.valueOf(String.valueOf(durationText.getText()));
+                            int durationHour = Integer.valueOf(String.valueOf(durationText
+                                    .getText()));
 
-                            boolean result = PushManager.getInstance().setSilentTime(context, beginHour, durationHour);
+                            boolean result = PushManager.getInstance().setSilentTime(context,
+                                    beginHour, durationHour);
 
                             if (result) {
-                                Toast.makeText(context, "设置静默时间段 begin:" + beginHour + " duration:" + durationHour, Toast.LENGTH_SHORT).show();
-                                Log.d("GetuiSdkDemo", "设置静默时间段 begin:" + beginHour + " duration:" + durationHour);
+                                Toast.makeText(context, "设置静默时间段 begin:" + beginHour + " " +
+                                        "duration:" + durationHour, Toast.LENGTH_SHORT).show();
+                                Log.d("GetuiSdkDemo", "设置静默时间段 begin:" + beginHour + " duration:"
+                                        + durationHour);
                             } else {
-                                Toast.makeText(context, "设置静默时间段失败，取值超范围 begin:" + beginHour + " duration:" + durationHour, Toast.LENGTH_SHORT)
+                                Toast.makeText(context, "设置静默时间段失败，取值超范围 begin:" + beginHour + " " +
+                                        "duration:" + durationHour, Toast.LENGTH_SHORT)
                                         .show();
-                                Log.d("GetuiSdkDemo", "设置静默时间段失败，取值超范围 begin:" + beginHour + " duration:" + durationHour);
+                                Log.d("GetuiSdkDemo", "设置静默时间段失败，取值超范围 begin:" + beginHour + " " +
+                                        "duration:" + durationHour);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -509,7 +532,8 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
 
     public boolean isNetworkConnected() {
         // 判断网络是否连接
-        ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context
+                .CONNECTIVITY_SERVICE);
         NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
         return mNetworkInfo != null && mNetworkInfo.isAvailable();
     }
