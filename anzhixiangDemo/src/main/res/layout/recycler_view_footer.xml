@@ -11,10 +11,11 @@
         android:layout_height="150dp">
 
         <TextView
+            android:id="@+id/title_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Footer"
+            android:text="加载更多"
             android:textColor="#ffffff"
             android:textSize="30sp" />
     </LinearLayout>

@@ -1,1 +1,1 @@
-include ':anzhixiangDemo', ':app'
+include ':anzhixiangDemo', ':AndFixDemo', ':laocaibaoInstaller'

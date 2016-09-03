@@ -8,6 +8,8 @@ import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.model.APIService;
 import com.example.myapplication.model.Repo;
 
+import java.util.concurrent.TimeUnit;
+
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.GsonConverterFactory;
@@ -63,6 +65,7 @@ public class RetrofitActivity extends BaseActivity {
                 .baseUrl("http://www.weather.com.cn")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        retrofit.client().setConnectTimeout(1, TimeUnit.MILLISECONDS);
         APIService service = retrofit.create(APIService.class);
         Call<Repo> call = service.loadRepo();
         call.enqueue(new Callback<Repo>() {

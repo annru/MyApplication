@@ -19,6 +19,7 @@ import com.example.myapplication.fragment.DrawableFragment;
 import com.example.myapplication.fragment.GuideViewFragment;
 import com.example.myapplication.fragment.ImageSyncLoadFragment;
 import com.example.myapplication.fragment.MainFragment;
+import com.example.myapplication.fragment.RecyclerViewFragment;
 import com.example.myapplication.fragment.ShareFragment;
 import com.igexin.sdk.PushManager;
 
@@ -39,6 +40,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
 
     private FragmentManager mFragmentManager;
     private GuideViewFragment guideViewFragment;
+    private RecyclerViewFragment recyclerViewFragment;
     private ArchitectureFragment architectureFragment;
     private DialogFragment dialogFragment;
     private ShareFragment shareFragment;
@@ -86,6 +88,14 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                 }
                 break;
             case 1:
+                if (null == recyclerViewFragment) {
+                    recyclerViewFragment = new RecyclerViewFragment();
+                    mFragmentManager.beginTransaction().add(R.id.content_layout,
+                            recyclerViewFragment).commit();
+                } else {
+                    mFragmentManager.beginTransaction().replace(R.id.content_layout,
+                            recyclerViewFragment).commit();
+                }
                 break;
             case 2:
                 break;
@@ -131,7 +141,6 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
                         imageSyncLoadFragment = new ImageSyncLoadFragment();
                         mFragmentManager.beginTransaction().add(R.id.content_layout,
                                 imageSyncLoadFragment)
-
                                 .commit();
                     } else {
                         mFragmentManager.beginTransaction().replace(R.id.content_layout,
