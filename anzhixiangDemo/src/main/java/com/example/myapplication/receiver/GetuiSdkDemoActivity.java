@@ -101,6 +101,7 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         System.out.println("快捷键的使用");
+        System.out.println("提交记录2");
         context = this;
         isServiceRunning = true;
         clearBtn = (Button) findViewById(R.id.btn_clear);
