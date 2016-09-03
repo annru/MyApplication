@@ -1,14 +1,18 @@
 package com.example.myapplication;
 
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -37,25 +41,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        jietuLl.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver
-                .OnGlobalLayoutListener() {
-
-
-            @Override
-            public void onGlobalLayout() {
-                if (!isMeasured) {
-                    isMeasured = true;
-                    test();
-                }
-            }
-        });
+//        jietuLl.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver
+//                .OnGlobalLayoutListener() {
+//
+//
+//            @Override
+//            public void onGlobalLayout() {
+//                if (!isMeasured) {
+//                    isMeasured = true;
+//                    test();
+//                }
+//            }
+//        });
 
 
     }
 
     @OnClick({R.id.close_btn})
     public void onClick(View view) {
-           rootRl.setVisibility(View.GONE);
+        rootRl.setVisibility(View.GONE);
     }
 
     public void test() {
@@ -79,5 +83,46 @@ public class MainActivity extends AppCompatActivity {
         lp.setMargins(jietuLl.getLeft(), jietuLl.getTop(), jietuLl.getRight(), jietuLl.getBottom());
         imageView.setLayoutParams(lp);
 //        System.out.println(imageView.getWidth() + "," + imageView.getHeight());
+
+
+        TextView tv = new TextView(this);
+
+
     }
+
+    //    @TargetApi(17)
+    public void create() {
+        View view = new View(this);
+        if (Build.VERSION.SDK_INT >= 17)
+            view.setId(View.generateViewId());
+        else
+            view.setId(generateViewId());
+
+        TypedValue.applyDimension(12, 14, new DisplayMetrics());
+    }
+
+    private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
+
+    public static int generateViewId() {
+        for (; ; ) {
+            final int result = sNextGeneratedId.get();
+            // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
+            int newValue = result + 1;
+            if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
+            if (sNextGeneratedId.compareAndSet(result, newValue)) {
+                return result;
+            }
+        }
+    }
+
+    private static void testA() {
+        int n = 0;
+        for (; ; ) {
+            n++;
+            System.out.println(n);
+            if (n == 15)
+                return;
+        }
+    }
+
 }
