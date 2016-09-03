@@ -100,6 +100,7 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        Log.i("test","测试免密提交代码");
         context = this;
         isServiceRunning = true;
         clearBtn = (Button) findViewById(R.id.btn_clear);
