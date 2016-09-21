@@ -100,10 +100,6 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        System.out.println("快捷键的使用");
-        System.out.println("提交记录2");
-        System.out.println("提交记录3 ");
-        System.out.println("提交记录4 ");
         context = this;
         isServiceRunning = true;
         clearBtn = (Button) findViewById(R.id.btn_clear);
@@ -180,7 +176,7 @@ public class GetuiSdkDemoActivity extends Activity implements OnClickListener {
 
     private void requestPermission() {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
-                .WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE},
+                        .WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE},
                 REQUEST_PERMISSION);
 
     }
