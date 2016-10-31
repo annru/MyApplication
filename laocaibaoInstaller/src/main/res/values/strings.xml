@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">捞财宝安装器</string>
-    <string name="app_installed">捞财宝</string>
-    <string name="install">安装</string>
-    <string name="uninstalled_laocaibao">您还未安装捞财宝</string>
-    <string name="update">更新</string>
-</resources>

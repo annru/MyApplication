@@ -1,1 +1,1 @@
-include ':anzhixiangDemo', ':AndFixDemo', ':laocaibaoInstaller'
+include ':anzhixiangDemo', ':AndFixDemo', ':appbarLayoutDemo', ':pdfViewDemo', ':myRecyclerView'

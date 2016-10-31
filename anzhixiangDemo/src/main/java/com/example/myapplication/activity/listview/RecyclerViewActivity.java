@@ -1,10 +1,12 @@
 package com.example.myapplication.activity.listview;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
+import com.example.myapplication.utils.MyDiffCallback;
 import com.example.myapplication.view.DividerItemDecoration;
 
 import java.util.ArrayList;
@@ -20,7 +23,10 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class RecyclerViewActivity extends BaseActivity {
+public class RecyclerViewActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+
+    @Bind(R.id.swipe_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -40,63 +46,79 @@ public class RecyclerViewActivity extends BaseActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new MyRecyclerViewAdapter();
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new OnRecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, DateModel data) {
-                Log.i("RecyclerViewActivity", "点击item" + mData.indexOf(data));
-                Log.i("传递过来的对象", data + "");
-            }
-        });
+//        adapter.setOnItemClickListener(new OnRecyclerViewItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, DateModel data) {
+//                Log.i("RecyclerViewActivity", "点击item" + mData.indexOf(data));
+//            }
+//        });
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
-
-            boolean isSlidingToLast = false;
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    int lastVisibleItem = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-                    int totalItemCount = linearLayoutManager.getItemCount();
-                    if ((lastVisibleItem == totalItemCount - 1) && isSlidingToLast) {
-                        Log.i("onScrollStateChanged", "加载更多");
-                        mOnLoadMoreDataListener.onLoadMoreData();
-                    }
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                //dy>0表示正在想下滚动，小于或等于0在表示在向上滚动或者停止滚动
-                isSlidingToLast = dy > 0;
-                Log.i("dy", dy + "");
-            }
-        });
-
-        setOnLoadMoreDataListener(new OnLoadMoreDataListener() {
-            @Override
-            public void onLoadMoreData() {
-                Log.i("onLoadMoreData", "加载更多回调");
-                loadMoreData();
-            }
-        });
-        setFooterView(recyclerView, adapter);
+        swipeRefreshLayout.setOnRefreshListener(this);
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//
+//
+//            boolean isSlidingToLast = false;
+//
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+//                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                    int lastVisibleItem = linearLayoutManager.findLastCompletelyVisibleItemPosition();
+//                    int totalItemCount = linearLayoutManager.getItemCount();
+//                    if ((lastVisibleItem == totalItemCount - 1) && isSlidingToLast) {
+//                        Log.i("onScrollStateChanged", "加载更多");
+//                        mOnLoadMoreDataListener.onLoadMoreData();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                //dy>0表示正在想下滚动，小于或等于0在表示在向上滚动或者停止滚动
+//                isSlidingToLast = dy > 0;
+//                Log.i("dy", dy + "");
+//            }
+//        });
+//
+//        setOnLoadMoreDataListener(new OnLoadMoreDataListener() {
+//            @Override
+//            public void onLoadMoreData() {
+//                Log.i("onLoadMoreData", "加载更多回调");
+//                loadMoreData();
+//            }
+//        });
+//        setFooterView(recyclerView, adapter);
     }
 
-    private void setFooterView(RecyclerView view, MyRecyclerViewAdapter adapter) {
-        View footerView = LayoutInflater.from(this).inflate(R.layout.recycler_view_footer, view, false);
-        adapter.setFooterView(footerView);
-    }
+//    private void setFooterView(RecyclerView view, MyRecyclerViewAdapter adapter) {
+//        View footerView = LayoutInflater.from(this).inflate(R.layout.recycler_view_footer, view, false);
+//        adapter.setFooterView(footerView);
+//    }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+                List<DateModel> newData = refreshData();
+                DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new MyDiffCallback(mData, newData), true);
+                diffResult.dispatchUpdatesTo(adapter);
+
+                mData = newData;
+            }
+        }, 6000);
     }
 
 
@@ -174,6 +196,7 @@ public class RecyclerViewActivity extends BaseActivity {
             footerView = view;
             notifyItemInserted(0);
         }
+
     }
 
     /**
@@ -200,10 +223,7 @@ public class RecyclerViewActivity extends BaseActivity {
         mData = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             DateModel dm = new DateModel();
-            if (i == 0 || i == 2 || i == 5 || i == 7)
-                dm.setTitle("测试数据");
-            else
-                dm.setTitle(i + "测试数据");
+            dm.setTitle("这是测试数据---" + i);
             mData.add(dm);
         }
     }
@@ -217,9 +237,31 @@ public class RecyclerViewActivity extends BaseActivity {
         adapter.notifyDataSetChanged();
     }
 
+    private List<DateModel> refreshData() {
+        List<DateModel> list = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            DateModel dm = new DateModel();
+            if (i / 2 == 0)
+                dm.setTitle("这是差异数据---" + i);
+            else
+                dm.setTitle("这是测试数据---" + i);
+            list.add(dm);
+        }
+        return list;
+    }
+
 
     public class DateModel {
+        private int id;
         private String title;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
 
         public String getTitle() {
             return title;
