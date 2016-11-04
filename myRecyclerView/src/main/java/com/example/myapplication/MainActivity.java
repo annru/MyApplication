@@ -1,58 +1,327 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
+import com.github.jdsjlzx.interfaces.OnItemClickListener;
+import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
+import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+import com.github.jdsjlzx.recyclerview.ProgressStyle;
+import com.github.jdsjlzx.util.RecyclerViewStateUtils;
+import com.github.jdsjlzx.view.LoadingFooter;
+
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.swipe_layout)
-    SwipeRefreshLayout swipeRefreshLayout;
+//    private static final String TAG = "lzx";
 
-    @Bind(R.id.recycler_view)
-    RecyclerView recyclerView;
+    /**
+     * 服务器端一共多少条数据
+     */
+    private static final int TOTAL_COUNTER = 64;
 
-    private List<ProductInfoItem> mData;
-    private OnLoadMoreDataListener mOnLoadMoreDataListener;
-//    private MyAdapter adapter;
+    /**
+     * 每一页展示多少条数据
+     */
+    private static final int REQUEST_COUNT = 10;
+
+    /**
+     * 已经获取到多少条数据了
+     */
+    private static int mCurrentCounter = 0;
+
+    private LRecyclerView mRecyclerView = null;
+
+    private DataAdapter mDataAdapter = null;
+
+    private PreviewHandler mHandler = new PreviewHandler(this);
+    private LRecyclerViewAdapter mLRecyclerViewAdapter = null;
+
+    private boolean isRefresh = false;
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    SwipeRefreshLayout
+    LinearLayout ll;
+    ScrollView scrollView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        initData();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        MyAdapter adapter = new MyAdapter(this, mData);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mRecyclerView = (LRecyclerView) findViewById(R.id.list);
+
+
+        mDataAdapter = new DataAdapter(this);
+        mLRecyclerViewAdapter = new LRecyclerViewAdapter(mDataAdapter);
+        mRecyclerView.setAdapter(mLRecyclerViewAdapter);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        mRecyclerView.setArrowImageView(R.drawable.ic_pulltorefresh_arrow);
+
+        mLRecyclerViewAdapter.addHeaderView(new SampleHeader(this));
+
+        mRecyclerView.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                RecyclerViewStateUtils.setFooterViewState(mRecyclerView, LoadingFooter.State.Normal);
+                mDataAdapter.clear();
+                mLRecyclerViewAdapter.notifyDataSetChanged();//fix bug:crapped or attached views may not be recycled. isScrap:false isAttached:true
+                mCurrentCounter = 0;
+                isRefresh = true;
+                requestData();
+            }
+        });
+
+        mRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                LoadingFooter.State state = RecyclerViewStateUtils.getFooterViewState(mRecyclerView);
+                if (state == LoadingFooter.State.Loading) {
+                    Log.d(TAG, "the state is Loading, just wait..");
+                    return;
+                }
+
+                if (mCurrentCounter < TOTAL_COUNTER) {
+                    // loading more
+                    RecyclerViewStateUtils.setFooterViewState(MainActivity.this, mRecyclerView, REQUEST_COUNT, LoadingFooter.State.Loading, null);
+                    requestData();
+                } else {
+                    //the end
+                    RecyclerViewStateUtils.setFooterViewState(MainActivity.this, mRecyclerView, REQUEST_COUNT, LoadingFooter.State.TheEnd, null);
+                }
+            }
+        });
+
+        mRecyclerView.setLScrollListener(new LRecyclerView.LScrollListener() {
+
+            @Override
+            public void onScrollUp() {
+                Log.i(TAG, "onScrollUp");
+            }
+
+            @Override
+            public void onScrollDown() {
+                Log.i(TAG, "onScrollDown");
+            }
+
+
+            @Override
+            public void onScrolled(int distanceX, int distanceY) {
+                Log.i(TAG, "onScrolled");
+            }
+
+            @Override
+            public void onScrollStateChanged(int state) {
+                Log.i(TAG, "onScrollStateChanged");
+            }
+        });
+
+
+        mRecyclerView.setRefreshing(true);
+
+        mLRecyclerViewAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                ItemModel item = mDataAdapter.getDataList().get(position);
+                AppToast.showShortText(MainActivity.this, item.title);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                ItemModel item = mDataAdapter.getDataList().get(position);
+                AppToast.showShortText(MainActivity.this, "onItemLongClick - " + item.title);
+            }
+        });
+
     }
 
-    private void initData() {
-        mData = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            ProductInfoItem item = new ProductInfoItem();
-            item.setProductName("产品名称---" + i);
-            mData.add(item);
+    private void notifyDataSetChanged() {
+        mLRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    private void addItems(ArrayList<ItemModel> list) {
+
+        mDataAdapter.addAll(list);
+        mCurrentCounter += list.size();
+
+    }
+
+    private static class PreviewHandler extends Handler {
+
+        private WeakReference<MainActivity> ref;
+
+        PreviewHandler(MainActivity activity) {
+            ref = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            final MainActivity activity = ref.get();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+            switch (msg.what) {
+
+                case -1:
+                    if (activity.isRefresh) {
+                        activity.mDataAdapter.clear();
+                        mCurrentCounter = 0;
+                    }
+
+                    int currentSize = activity.mDataAdapter.getItemCount();
+
+                    //模拟组装10个数据
+                    ArrayList<ItemModel> newList = new ArrayList<>();
+                    for (int i = 0; i < 10; i++) {
+                        if (newList.size() + currentSize >= TOTAL_COUNTER) {
+                            break;
+                        }
+
+                        ItemModel item = new ItemModel();
+                        item.id = currentSize + i;
+                        item.title = "item" + (item.id);
+
+                        newList.add(item);
+                    }
+
+
+                    activity.addItems(newList);
+
+                    if (activity.isRefresh) {
+                        activity.isRefresh = false;
+                        activity.mRecyclerView.refreshComplete();
+                    }
+
+                    RecyclerViewStateUtils.setFooterViewState(activity.mRecyclerView, LoadingFooter.State.Normal);
+                    activity.notifyDataSetChanged();
+                    break;
+                case -2:
+                    activity.notifyDataSetChanged();
+                    break;
+                case -3:
+                    if (activity.isRefresh) {
+                        activity.isRefresh = false;
+                        activity.mRecyclerView.refreshComplete();
+                    }
+                    activity.notifyDataSetChanged();
+                    RecyclerViewStateUtils.setFooterViewState(activity, activity.mRecyclerView, REQUEST_COUNT, LoadingFooter.State.NetWorkError, activity.mFooterClick);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
+    private View.OnClickListener mFooterClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            RecyclerViewStateUtils.setFooterViewState(MainActivity.this, mRecyclerView, REQUEST_COUNT, LoadingFooter.State.Loading, null);
+            requestData();
+        }
+    };
+
     /**
-     * 加载更多回调接口
+     * 模拟请求网络
      */
-    public interface OnLoadMoreDataListener {
-        void onLoadMoreData();
+    private void requestData() {
+        Log.d(TAG, "requestData");
+        new Thread() {
+
+            @Override
+            public void run() {
+                super.run();
+
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                //模拟一下网络请求失败的情况
+                if (NetworkUtils.isNetAvailable(MainActivity.this)) {
+                    mHandler.sendEmptyMessage(-1);
+                } else {
+                    mHandler.sendEmptyMessage(-3);
+                }
+            }
+        }.start();
     }
+
+    private class DataAdapter extends ListBaseAdapter<ItemModel> {
+
+        private LayoutInflater mLayoutInflater;
+
+        private DataAdapter(Context context) {
+            mLayoutInflater = LayoutInflater.from(context);
+            mContext = context;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(mLayoutInflater.inflate(R.layout.list_item_text, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+            ItemModel item = mDataList.get(position);
+
+            ViewHolder viewHolder = (ViewHolder) holder;
+            viewHolder.textView.setText(item.title);
+
+        }
+
+        private class ViewHolder extends RecyclerView.ViewHolder {
+
+            private TextView textView;
+
+            private ViewHolder(View itemView) {
+                super(itemView);
+                textView = (TextView) itemView.findViewById(R.id.info_text);
+            }
+        }
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_refresh, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        } else if (item.getItemId() == R.id.menu_refresh) {
+            mRecyclerView.forceToRefresh();
+            //mDataAdapter.remove(mLRecyclerViewAdapter.getAdapterPosition(false,3));
+        }
+        return true;
+    }
+
 }
