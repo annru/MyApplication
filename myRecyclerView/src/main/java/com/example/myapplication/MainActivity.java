@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isRefresh = false;
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    SwipeRefreshLayout
-    LinearLayout ll;
-    ScrollView scrollView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
