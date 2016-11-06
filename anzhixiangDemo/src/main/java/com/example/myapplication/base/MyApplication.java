@@ -29,14 +29,14 @@ public class MyApplication extends Application implements AppForegroundStateMana
     @Override
     public void onCreate() {
         super.onCreate();
-        Fresco.initialize(this);
+//        Fresco.initialize(this);
 
         //调试工具
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-                        .build());
+//        Stetho.initialize(
+//                Stetho.newInitializerBuilder(this)
+//                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+//                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+//                        .build());
         //程序前台后台
         AppForegroundStateManager.getInstance().addListener(this);
 

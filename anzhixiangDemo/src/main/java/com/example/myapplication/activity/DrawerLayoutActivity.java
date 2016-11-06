@@ -21,6 +21,7 @@ import com.example.myapplication.fragment.ImageSyncLoadFragment;
 import com.example.myapplication.fragment.MainFragment;
 import com.example.myapplication.fragment.RecyclerViewFragment;
 import com.example.myapplication.fragment.ShareFragment;
+import com.example.myapplication.utils.EncryptTools;
 import com.igexin.sdk.PushManager;
 
 import butterknife.Bind;
@@ -57,7 +58,6 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
         listView.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, getResources()
                 .getStringArray(R.array.drawer_item)));
         initFragment();
-        testDebug();
     }
 
     private void initFragment() {
@@ -166,12 +166,6 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
         ButterKnife.unbind(this);
         MyActivityManager.getInstance().testPrintln();
 //        android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    private void testDebug() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println("打印" + i);
-        }
     }
 
 }
