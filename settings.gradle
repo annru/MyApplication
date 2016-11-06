@@ -1,1 +1,1 @@
-include ':anzhixiangDemo', ':AndFixDemo', ':laocaibaoInstaller'
+include ':anzhixiangDemo', ':AndFixDemo', ':laocaibaoInstaller', ':BottomNavigationViewDemo', ':RxJavaDemo', ':FlowLayoutDemo'
