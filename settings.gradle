@@ -1,1 +1,1 @@
-include ':anzhixiangDemo', ':appbarLayoutDemo', ':pdfViewDemo', ':myRecyclerView'
+include ':anzhixiangDemo', ':BottomNavigationViewDemo', ':RxJavaDemo', ':FlowLayoutDemo'
