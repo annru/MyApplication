@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.interfaces.OnItemClickListener;
@@ -60,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isRefresh = false;
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    SwipeRefreshLayout
-    LinearLayout ll;
-    ScrollView scrollView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
