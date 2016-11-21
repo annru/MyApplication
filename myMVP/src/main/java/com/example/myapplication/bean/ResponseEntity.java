@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.bean;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import java.util.List;
  * 数据模型
  */
 
-public class Response {
+public class ResponseEntity {
     private int error_code;
     private String reason;
     private ResponseInfo result;
