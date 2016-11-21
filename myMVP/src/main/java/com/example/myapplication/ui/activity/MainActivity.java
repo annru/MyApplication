@@ -10,6 +10,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     @Bind(R.id.swipe_layout)
     SwipeRefreshLayout swipeRefreshLayout;
     private HealthAdapter mAdapter;
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        toolbar.setTitle("健康知识分组");
         swipeRefreshLayout.setOnRefreshListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
