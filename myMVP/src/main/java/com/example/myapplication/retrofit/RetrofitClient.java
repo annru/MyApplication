@@ -1,7 +1,8 @@
-package com.example.myapplication.http;
+package com.example.myapplication.retrofit;
 
 import android.util.Log;
 
+import com.example.myapplication.base.SubscriberCallback;
 import com.example.myapplication.bean.HealthCategoryBean;
 import com.example.myapplication.bean.HealthInfoBean;
 import com.example.myapplication.bean.Repo;
@@ -43,7 +44,8 @@ public class RetrofitClient {
         private static final RetrofitClient INSTANCE = new RetrofitClient();
     }
 
-    public void getTopMovie(Subscriber<String> subscriber, int start, int count) {
+    public void getTopMovie(Subscriber<String> subscriber, int start, int
+            count) {
         apiService.getTopMovie(start, count)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -52,7 +54,8 @@ public class RetrofitClient {
     }
 
 
-    public void getBook(Subscriber<ResponseEntity> subscriber, String key, int cat, int ranks) {
+    public void getBook(Subscriber<ResponseEntity> subscriber, String key,
+                        int cat, int ranks) {
         Log.i("getBook", "请求小说大全");
         apiService.getBook(key, cat, ranks)
                 .subscribeOn(Schedulers.io())
@@ -75,7 +78,8 @@ public class RetrofitClient {
      * @param subscriber
      * @param key
      */
-    public void getHealthKnowledgeCategoryList(Subscriber<HealthCategoryBean> subscriber, String key) {
+    public void getHealthKnowledgeCategoryList(Subscriber<HealthCategoryBean>
+                                                       subscriber, String key) {
         apiService.getHealthKnowledgeCategoryList(key)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -89,9 +93,21 @@ public class RetrofitClient {
      * @param subscriber
      * @param key
      */
-    public void getHealthKnowledgeInfoList(Subscriber<HealthInfoBean> subscriber, String key, String page, String limit, String
-            id) {
+    public void getHealthKnowledgeInfoList(SubscriberCallback<HealthInfoBean>
+                                                   subscriber, String key,
+                                           String page, String
+                                                   limit, String
+                                                   id) {
         apiService.getHealthKnowledgeInfoList(key, page, limit, id)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getTrainTimeList(Subscriber<Object> subscriber, String key,
+                                 String name) {
+        apiService.getTrainTimeList(name, key)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

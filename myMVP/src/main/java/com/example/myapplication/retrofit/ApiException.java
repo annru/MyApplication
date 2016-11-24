@@ -1,4 +1,4 @@
-package com.example.myapplication.http;
+package com.example.myapplication.retrofit;
 
 /**
  * Created by 00224524 on 2016/11/18.

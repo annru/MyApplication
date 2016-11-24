@@ -1,6 +1,7 @@
-package com.example.myapplication.http;
+package com.example.myapplication.retrofit;
 
 
+import com.example.myapplication.base.SubscriberCallback;
 import com.example.myapplication.bean.HealthCategoryBean;
 import com.example.myapplication.bean.HealthInfoBean;
 import com.example.myapplication.bean.Repo;
@@ -20,7 +21,8 @@ import rx.Observable;
 interface ApiService {
     //    String Base_URL = "https://api.douban.com/v2/movie/";
 //    String Base_URL = "http://www.weather.com.cn";
-    String Base_URL = "http://japi.juhe.cn/";
+//    String Base_URL = "http://japi.juhe.cn/";
+    String Base_URL = "http://apis.juhe.cn/";
 
     @GET("top250")
     Observable<String> getTopMovie(@Query("start") int start, @Query("count") int count);
@@ -36,7 +38,10 @@ interface ApiService {
     Observable<HealthCategoryBean> getHealthKnowledgeCategoryList(@Query("key") String key);
 
     @POST("health_knowledge/infoList")
-    Observable<HealthInfoBean> getHealthKnowledgeInfoList(@Query("key") String key, @Query("page") String page, @Query("limit")
-            String limit, @Query("id") String id);
+    Observable<SubscriberCallback<HealthInfoBean>> getHealthKnowledgeInfoList(@Query("key") String key, @Query
+            ("page") String page, @Query("limit") String limit, @Query("id") String id);
+
+    @GET("train/s")
+    Observable<Object> getTrainTimeList(@Query("name") String name, @Query("key") String key);
 
 }

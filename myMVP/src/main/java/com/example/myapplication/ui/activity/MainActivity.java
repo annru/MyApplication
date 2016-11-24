@@ -16,6 +16,8 @@ import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.HealthAdapter;
+import com.example.myapplication.base.ApiCallback;
+import com.example.myapplication.base.SubscriberCallback;
 import com.example.myapplication.bean.HealthCategoryBean;
 import com.example.myapplication.bean.HealthCategoryItem;
 import com.example.myapplication.bean.HealthInfoBean;
@@ -23,7 +25,7 @@ import com.example.myapplication.bean.HealthInfoData;
 import com.example.myapplication.bean.HealthInfoDataItem;
 import com.example.myapplication.bean.Repo;
 import com.example.myapplication.bean.ResponseEntity;
-import com.example.myapplication.http.RetrofitClient;
+import com.example.myapplication.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.Subscriber;
 
-public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, HealthAdapter
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout
+        .OnRefreshListener, HealthAdapter
         .OnRecyclerViewItemClickListener {
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -57,15 +60,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         swipeRefreshLayout.setOnRefreshListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration
+                .VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(true);
-                requestHealthCategoryList(KEY);
-            }
-        });
+//        swipeRefreshLayout.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                swipeRefreshLayout.setRefreshing(true);
+//                requestHealthCategoryList(KEY);
+//            }
+//        });
+        requestTrainTimeList("eebfe918f8fdf0ee34e477af1a896f10", "G4");
     }
 
     @Override
@@ -192,7 +197,55 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
      * @param key
      */
     private void requestHealthInfoList(String key, String page, String limit, String id) {
-        Subscriber<HealthInfoBean> subscriber = new Subscriber<HealthInfoBean>() {
+        SubscriberCallback<HealthInfoBean> subscriberCallback = new SubscriberCallback<>(new ApiCallback<HealthInfoBean>() {
+
+
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(HealthInfoBean healthInfoBean) {
+
+            }
+        });
+
+//        SubscriberCallback<HealthInfoBean> subscriber = new SubscriberCallback<HealthInfoBean>() {
+//            @Override
+//            public void onCompleted() {
+//                System.out.println("完成");
+//                if (mProgressDialog != null && mProgressDialog.isShowing())
+//                    mProgressDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(HealthInfoBean healthInfo) {
+//                HealthInfoData healthInfoData = healthInfo.getResult();
+//                List<HealthInfoDataItem> items = healthInfoData.getData();
+//                Intent intent = new Intent(MainActivity.this, HealthKnowledgeInfoListActivity.class);
+//                intent.putParcelableArrayListExtra("items", (ArrayList<? extends Parcelable>) items);
+//                startActivity(intent);
+//            }
+//        };
+        RetrofitClient.getInstance().getHealthKnowledgeInfoList(subscriberCallback, key, page, limit, id);
+    }
+
+    /**
+     * 获取火车时刻列表
+     */
+    private void requestTrainTimeList(String key, String name) {
+        Subscriber<Object> subscriber = new Subscriber<Object>() {
             @Override
             public void onCompleted() {
                 System.out.println("完成");
@@ -206,15 +259,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             }
 
             @Override
-            public void onNext(HealthInfoBean healthInfo) {
-                HealthInfoData healthInfoData = healthInfo.getResult();
-                List<HealthInfoDataItem> items = healthInfoData.getData();
-                Intent intent = new Intent(MainActivity.this, HealthKnowledgeInfoListActivity.class);
-                intent.putParcelableArrayListExtra("items", (ArrayList<? extends Parcelable>) items);
-                startActivity(intent);
+            public void onNext(Object object) {
+                Log.i("打印数据", object.toString());
             }
         };
-        RetrofitClient.getInstance().getHealthKnowledgeInfoList(subscriber, key, page, limit, id);
+        RetrofitClient.getInstance().getTrainTimeList(subscriber, key, name);
     }
 
     @Override
