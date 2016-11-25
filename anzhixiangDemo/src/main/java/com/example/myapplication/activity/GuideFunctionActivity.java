@@ -3,6 +3,7 @@ package com.example.myapplication.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
@@ -58,6 +59,9 @@ public class GuideFunctionActivity extends BaseActivity {
                 }
             }
         });
+
+
+        Toast.makeText(this, R.string.test,Toast.LENGTH_LONG).show();
 
     }
 }

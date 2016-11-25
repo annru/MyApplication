@@ -9,7 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.jintou.shyumi.CustomWebView;
+import com.jintou.shyumi.view.CustomWebView;
 import com.jintou.shyumi.R;
 
 import butterknife.Bind;

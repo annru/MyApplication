@@ -1,1 +1,1 @@
-include ':anzhixiangDemo', ':RxJavaDemo', ':FlowLayoutDemo', ':myRecyclerView', ':myMVP'
+include ':anzhixiangDemo', ':RxJavaDemo', ':FlowLayoutDemo', ':myRecyclerView', ':myMVP', ':yumi'

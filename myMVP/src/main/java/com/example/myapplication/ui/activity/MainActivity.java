@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 //                startActivity(intent);
 //            }
 //        };
-        RetrofitClient.getInstance().getHealthKnowledgeInfoList(subscriberCallback, key, page, limit, id);
+//        RetrofitClient.getInstance().getHealthKnowledgeInfoList(subscriberCallback, key, page, limit, id);
     }
 
     /**
