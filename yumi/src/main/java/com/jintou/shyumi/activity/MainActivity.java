@@ -9,6 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.jintou.shyumi.BuildConfig;
 import com.jintou.shyumi.view.CustomWebView;
 import com.jintou.shyumi.R;
 
@@ -16,7 +17,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    private final static String URL = "http://www.shyumi.com:9090/web/index.do";
 
     @Bind(R.id.web_view)
     CustomWebView mWebView;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         mWebView.getSettings().setUseWideViewPort(true);
         mWebView.getSettings().setLoadWithOverviewMode(true);
-        mWebView.loadUrl(URL);
+        mWebView.loadUrl(BuildConfig.URL);
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {

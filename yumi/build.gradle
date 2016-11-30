@@ -13,9 +13,12 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        buildConfigField "String", "URL", project.URL_BETA
+
     }
     buildTypes {
         release {
+            buildConfigField "String", "URL", project.URL_PRODUCTION
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
