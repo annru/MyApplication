@@ -301,21 +301,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_refresh, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        } else if (item.getItemId() == R.id.menu_refresh) {
-            mRecyclerView.forceToRefresh();
-            //mDataAdapter.remove(mLRecyclerViewAdapter.getAdapterPosition(false,3));
-        }
-        return true;
-    }
 
 }
