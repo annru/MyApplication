@@ -69,5 +69,6 @@
     <string name="bind_alias">绑定别名</string>
     <string name="unbind_alias">解除别名绑定</string>
     <string name="textview">textview</string>
+    <string name="test">dfdsfd</string>
 
 </resources>
