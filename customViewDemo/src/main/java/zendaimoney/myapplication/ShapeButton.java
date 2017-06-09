@@ -15,7 +15,7 @@ import android.view.Gravity;
  * description:
  */
 
-public class ShapeButton extends android.support.v7.widget.AppCompatTextView {
+public class ShapeButton extends android.support.v7.widget.AppCompatButton {
     private float radius;
     private float stroke;
     private ColorStateList colors;
@@ -26,6 +26,7 @@ public class ShapeButton extends android.support.v7.widget.AppCompatTextView {
 
     public ShapeButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context, attrs);
     }
 
     public ShapeButton(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -35,6 +36,7 @@ public class ShapeButton extends android.support.v7.widget.AppCompatTextView {
 
 
     void init(Context context, AttributeSet attrs) {
+        setClickable(true);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ShapeButton);
         radius = a.getDimension(R.styleable.ShapeButton_radius, 0);
         stroke = a.getDimension(R.styleable.ShapeButton_stroke, 0);

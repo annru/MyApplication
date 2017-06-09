@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="按钮Shape"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:buttonColor="@color/colorPrimary"
-        app:radius="5dp"
-        app:stroke="2dp"/>
+        app:radius="2dp"
+        app:stroke="0.5dp"/>
 
 </RelativeLayout>
