@@ -1,1 +1,1 @@
-include ':anzhixiangDemo', ':myRecyclerView', ':myMVP', ':yumi', ':xRecyclerViewDemo', ':mylibrary', ':activityResultDemo', ':multipleStatusLayoutDemo', ':customViewDemo', ':greenDAODemo',':RxJavaDemo'
+include ':anzhixiangDemo', ':myRecyclerView', ':myMVP', ':yumi', ':xRecyclerViewDemo', ':mylibrary', ':activityResultDemo', ':multipleStatusLayoutDemo', ':customViewDemo', ':greenDAODemo', ':RxJavaDemo', ':myLaocaibao'
