@@ -1,12 +1,18 @@
 package com.zendaimoney.laocaibao.activity;
 
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.zendaimoney.laocaibao.R;
+import com.zendaimoney.laocaibao.adapter.FragmentAdapter;
+import com.zendaimoney.laocaibao.fragment.ProductFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         String[] titles = getResources().getStringArray(R.array.tab_title);
         ButterKnife.bind(this);
-//        viewPager.setAdapter();
+        List<Fragment> list = new ArrayList<>();
+        list.add(new ProductFragment());
+        list.add(new ProductFragment());
+        list.add(new ProductFragment());
+        list.add(new ProductFragment());
+        FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), list);
+        viewPager.setAdapter(adapter);
         bottomNavigationBar.addItem(new BottomNavigationItem(resId[0], titles[0]))
                 .addItem(new BottomNavigationItem(resId[1], titles[1]))
                 .addItem(new BottomNavigationItem(resId[2], titles[2]))
