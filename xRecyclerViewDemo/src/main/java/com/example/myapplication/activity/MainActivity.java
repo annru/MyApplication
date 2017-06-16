@@ -2,6 +2,7 @@ package com.example.myapplication.activity;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.AnimalsHeadersAdapter;
 import com.example.myapplication.adapter.DividerDecoration;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
@@ -36,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-
 //
 //
 //        listData = new ArrayList<>();
@@ -58,8 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+//        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 //        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+//        xRecyclerView.setLayoutManager(layoutManager);
+
+
+        int orientation = getLayoutManagerOrientation(getResources().getConfiguration().orientation);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, orientation, false);
         xRecyclerView.setLayoutManager(layoutManager);
 
 
@@ -76,52 +82,52 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        xRecyclerView.setLoadingMoreEnabled(false);
-//        xRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-//        xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
-//            @Override
-//            public void onRefresh() {
-//                refreshTime++;
-//                times = 0;
-//                new Handler().postDelayed(new Runnable() {
-//                    public void run() {
-////                        listData.clear();
-////                        for (int i = 0; i < 15; i++) {
-////                            listData.add("item" + i + "after " + refreshTime + " times of refresh");
-////                        }
-////                        mAdapter.notifyDataSetChanged();
-//                        xRecyclerView.refreshComplete();
-//                    }
-//
-//                }, 1000);
-//            }
-//
-//            @Override
-//            public void onLoadMore() {
-//                if (times < 2) {
-//                    new Handler().postDelayed(new Runnable() {
-//                        public void run() {
-//                            for (int i = 0; i < 15; i++) {
-//                                listData.add("item" + (1 + listData.size()));
-//                            }
-//                            xRecyclerView.loadMoreComplete();
-////                            mAdapter.notifyDataSetChanged();
+        xRecyclerView.setLoadingMoreEnabled(false);
+        xRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                refreshTime++;
+                times = 0;
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+//                        listData.clear();
+//                        for (int i = 0; i < 15; i++) {
+//                            listData.add("item" + i + "after " + refreshTime + " times of refresh");
 //                        }
-//                    }, 1000);
-//                } else {
-//                    new Handler().postDelayed(new Runnable() {
-//                        public void run() {
-//                            for (int i = 0; i < 9; i++) {
-//                                listData.add("item" + (1 + listData.size()));
-//                            }
-//                            xRecyclerView.setNoMore(true);
-////                            mAdapter.notifyDataSetChanged();
-//                        }
-//                    }, 1000);
-//                }
-//                times++;
-//            }
-//        });
+//                        mAdapter.notifyDataSetChanged();
+                        xRecyclerView.refreshComplete();
+                    }
+
+                }, 1000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                if (times < 2) {
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            for (int i = 0; i < 15; i++) {
+                                listData.add("item" + (1 + listData.size()));
+                            }
+                            xRecyclerView.loadMoreComplete();
+//                            mAdapter.notifyDataSetChanged();
+                        }
+                    }, 1000);
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            for (int i = 0; i < 9; i++) {
+                                listData.add("item" + (1 + listData.size()));
+                            }
+                            xRecyclerView.setNoMore(true);
+//                            mAdapter.notifyDataSetChanged();
+                        }
+                    }, 1000);
+                }
+                times++;
+            }
+        });
     }
 
     private String[] getDummyDataSet() {
