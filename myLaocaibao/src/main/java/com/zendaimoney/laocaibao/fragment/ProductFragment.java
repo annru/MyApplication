@@ -20,6 +20,12 @@ import butterknife.ButterKnife;
 
 public class ProductFragment extends BaseFragment {
 
+
+    public static ProductFragment newInstances() {
+        ProductFragment productFragment = new ProductFragment();
+        return productFragment;
+    }
+
     @BindView(R.id.test_tv)
     TextView testTv;
 

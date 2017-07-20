@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         String[] titles = getResources().getStringArray(R.array.tab_title);
         ButterKnife.bind(this);
         List<Fragment> list = new ArrayList<>();
-        list.add(new ProductFragment());
-        list.add(new ProductFragment());
-        list.add(new ProductFragment());
-        list.add(new ProductFragment());
+        list.add(ProductFragment.newInstances());
+        list.add(ProductFragment.newInstances());
+        list.add(ProductFragment.newInstances());
+        list.add(ProductFragment.newInstances());
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         bottomNavigationBar.addItem(new BottomNavigationItem(resId[0], titles[0]))
