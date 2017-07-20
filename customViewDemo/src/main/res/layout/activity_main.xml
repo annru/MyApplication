@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="zendaimoney.myapplication.MainActivity">
+
+
+    <zendaimoney.myapplication.MyView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:myTextColor="@color/colorAccent"
+        app:myTextSize="20dp"
+        />
+
+    <zendaimoney.myapplication.ShapeButton
+        android:id="@+id/shape_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="按钮Shape"
+        android:textSize="16sp"
+        app:buttonColor="@color/colorPrimary"
+        app:radius="2dp"
+        app:stroke="0.5dp"/>
+
+</RelativeLayout>
