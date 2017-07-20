@@ -25,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar bottomNavigationBar;
 
-    private int[] resId = new int[]{R.drawable.ic_tab_one_on, R.drawable.ic_tab_two_on, R.drawable.ic_tab_3_on, R
-            .drawable.ic_tab_4_on};
+    private int[] resId = new int[]{R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap
+            .ic_launcher_round, R
+            .mipmap.ic_launcher_round};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
