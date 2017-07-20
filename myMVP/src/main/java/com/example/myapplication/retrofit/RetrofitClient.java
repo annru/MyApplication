@@ -31,8 +31,7 @@ public class RetrofitClient {
     private RetrofitClient() {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(15, TimeUnit.SECONDS);
-        Retrofit retrofit = new Retrofit.Builder()
-                .client(httpClientBuilder.build())
+        Retrofit retrofit = new Retrofit.Builder().client(httpClientBuilder.build())
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -93,17 +92,17 @@ public class RetrofitClient {
      * @param subscriber
      * @param key
      */
-//    public void getHealthKnowledgeInfoList(SubscriberCallback<HealthInfoBean>
-//                                                   subscriber, String key,
-//                                           String page, String
-//                                                   limit, String
-//                                                   id) {
-//        apiService.getHealthKnowledgeInfoList(key, page, limit, id)
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(subscriber);
-//    }
+    public void getHealthKnowledgeInfoList(SubscriberCallback<HealthInfoBean> subscriber,
+                                           String key,
+                                           String page,
+                                           String limit,
+                                           String id) {
+        apiService.getHealthKnowledgeInfoList(key, page, limit, id)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 
     public void getTrainTimeList(Subscriber<Object> subscriber, String key,
                                  String name) {
