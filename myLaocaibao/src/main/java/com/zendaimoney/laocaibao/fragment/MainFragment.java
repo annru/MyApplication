@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zendaimoney.laocaibao.R;
-import com.zendaimoney.laocaibao.base.BaseFragment;
 import com.zendaimoney.laocaibao.base.LazyLoadFragment;
 
 import butterknife.BindView;
@@ -20,16 +19,16 @@ import butterknife.ButterKnife;
  * description:
  */
 
-public class ProductFragment extends LazyLoadFragment {
+public class MainFragment extends LazyLoadFragment {
     private boolean isPrepared;//初始化完成标识符
 
 
-    public static ProductFragment newInstances() {
-        ProductFragment productFragment = new ProductFragment();
+    public static MainFragment newInstances() {
+        MainFragment productFragment = new MainFragment();
         return productFragment;
     }
 
-    public ProductFragment() {
+    public MainFragment() {
         //需要默认的构造方法
     }
 
@@ -45,7 +44,7 @@ public class ProductFragment extends LazyLoadFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
             savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
         isPrepared = true;
         lazyLoad();
@@ -55,8 +54,8 @@ public class ProductFragment extends LazyLoadFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        testTv.setText("这是热修复之后的的新包NEW");
-        Log.i("onActivityCreated", "这是产品页");
+        testTv.setText("这是首页");
+        Log.i("onActivityCreated", "这是首页");
     }
 
     @Override

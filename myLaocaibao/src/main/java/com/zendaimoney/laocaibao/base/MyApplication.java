@@ -3,6 +3,7 @@ package com.zendaimoney.laocaibao.base;
 import android.app.Application;
 import android.widget.Toast;
 
+import com.igexin.sdk.PushManager;
 import com.taobao.sophix.PatchStatus;
 import com.taobao.sophix.SophixManager;
 import com.taobao.sophix.listener.PatchLoadStatusListener;
@@ -44,5 +45,9 @@ public class MyApplication extends Application {
                     }
                 }).initialize();
         SophixManager.getInstance().queryAndLoadNewPatch();
+
+
+        //个推sdk初始化
+        PushManager.getInstance().initialize(this.getApplicationContext());
     }
 }

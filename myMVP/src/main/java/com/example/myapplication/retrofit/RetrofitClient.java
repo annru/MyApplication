@@ -97,11 +97,11 @@ public class RetrofitClient {
                                            String page,
                                            String limit,
                                            String id) {
-        apiService.getHealthKnowledgeInfoList(key, page, limit, id)
-                .subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+//        apiService.getHealthKnowledgeInfoList(key, page, limit, id)
+//                .subscribeOn(Schedulers.io())
+//                .unsubscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(subscriber);
     }
 
     public void getTrainTimeList(Subscriber<Object> subscriber, String key,

@@ -9,6 +9,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.adapter.FragmentAdapter;
+import com.zendaimoney.laocaibao.fragment.MainFragment;
 import com.zendaimoney.laocaibao.fragment.ProductFragment;
 
 import java.util.ArrayList;
@@ -36,12 +37,29 @@ public class MainActivity extends AppCompatActivity {
         String[] titles = getResources().getStringArray(R.array.tab_title);
         ButterKnife.bind(this);
         List<Fragment> list = new ArrayList<>();
+        list.add(MainFragment.newInstances());
         list.add(ProductFragment.newInstances());
-        list.add(ProductFragment.newInstances());
+
         list.add(ProductFragment.newInstances());
         list.add(ProductFragment.newInstances());
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                bottomNavigationBar.selectTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         bottomNavigationBar.addItem(new BottomNavigationItem(resId[0], titles[0]))
                 .addItem(new BottomNavigationItem(resId[1], titles[1]))
                 .addItem(new BottomNavigationItem(resId[2], titles[2]))
@@ -49,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
-
+                viewPager.setCurrentItem(position);
             }
 
             @Override
