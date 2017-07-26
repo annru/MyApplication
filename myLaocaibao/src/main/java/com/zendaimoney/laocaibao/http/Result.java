@@ -1,5 +1,7 @@
 package com.zendaimoney.laocaibao.http;
 
+import com.zendaimoney.laocaibao.model.MsgExInfo;
+
 public class Result {
     public static final String CODE_OK = "0000";
     public static final String CODE_0111 = "0111";

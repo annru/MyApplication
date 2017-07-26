@@ -6,4 +6,10 @@
         <item>我的</item>
         <item>更多</item>
     </string-array>
+
+    <string-array name="tab_title2">
+        <item>定期</item>
+        <item>散标</item>
+        <item>理财计划</item>
+    </string-array>
 </resources>

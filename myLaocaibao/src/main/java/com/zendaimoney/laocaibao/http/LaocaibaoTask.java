@@ -2,7 +2,11 @@ package com.zendaimoney.laocaibao.http;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.zendaimoney.laocaibao.BuildConfig;
 
 import org.json.JSONException;
@@ -17,11 +21,9 @@ public class LaocaibaoTask {
     private static final String TAG = "LaocaibaoTask";
     private Activity mContext;
     private JSONObject mJsonObject;
-    public String arg0;
-    public String arg1;
+    private String arg0;
+    private String arg1;
     private CommonCallBack mCallBackListener;
-    public int taskDataType;
-//    private static String baseUrl = "";
 
     public LaocaibaoTask(Activity context, JSONObject params, String methodCode,
                          CommonCallBack callback) {
@@ -29,42 +31,18 @@ public class LaocaibaoTask {
         this.mJsonObject = params;
         this.arg0 = methodCode;
         this.mCallBackListener = callback;
-
     }
 
 
     public void send() {
-        String baseUrl;
-
-        baseUrl = BuildConfig.VERSION_UPDATE_URL;
-
-//        AppLog.i("请求的接口地址", baseUrl);
+        String baseUrl = BuildConfig.BASE_URL;
         RequestParam requestParam = new RequestParam();
         arg1 = requestParam.getRequestParams(mContext, mJsonObject);
         LcbOkHttpClient.getInstance().post(mCallBackListener, baseUrl, arg0, arg1);
     }
 
-
-//    @Override
-//    protected Object doInBackground(Class<?>... params) {
-//        return getJsonFromNet(params[0]);
-//    }
-
-//    @Override
-//    protected void onPostExecute(Object result) {
-//        super.onPostExecute(result);
-//        if (!mContext.isFinishing()) {
-//            mCallBackListener.response(result, this);
-//        }
-//    }
-
     private <T> T getJsonFromNet(Class<T> c) {
-        String baseUrl;
-        if (arg0.equals(MethodCode.VERSION_UPDATE)) {
-            baseUrl = BuildConfig.VERSION_UPDATE_URL;
-        } else {
-            baseUrl = IpConfigActivity.sBaseUrl;
-        }
+
 //        AppLog.i("请求的接口地址", baseUrl);
         RequestParam requestParam = new RequestParam();
         arg1 = requestParam.getRequestParams(mContext, mJsonObject);
@@ -96,7 +74,7 @@ public class LaocaibaoTask {
                     }
                 }
             } catch (JsonSyntaxException e) {
-                AppLog.i(TAG, e.getLocalizedMessage());
+                Log.i(TAG, e.getLocalizedMessage());
             }
         }
         return null;

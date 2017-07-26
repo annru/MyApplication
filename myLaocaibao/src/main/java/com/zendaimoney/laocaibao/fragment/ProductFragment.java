@@ -2,15 +2,21 @@ package com.zendaimoney.laocaibao.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.base.BaseFragment;
 import com.zendaimoney.laocaibao.base.LazyLoadFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,8 +39,13 @@ public class ProductFragment extends LazyLoadFragment {
         //需要默认的构造方法
     }
 
-    @BindView(R.id.test_tv)
-    TextView testTv;
+    @BindView(R.id.tab)
+    TabLayout tabLayout;
+
+    @BindView(R.id.view_pager)
+    ViewPager viewPager;
+
+    private List<BaseFragment> list = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,8 +66,15 @@ public class ProductFragment extends LazyLoadFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        testTv.setText("这是热修复之后的的新包NEW");
-        Log.i("onActivityCreated", "这是产品页");
+        list.add(ProductTabOneFragment.newInstance());
+        list.add(ProductTabTwoFragment.newInstance());
+        list.add(ProductTabOneFragment.newInstance());
+        FragmentManager fm = getChildFragmentManager();
+        viewPager.setAdapter(new MyViewPagerAdapter(fm));
+        String[] tabsTitle = getActivity().getResources().getStringArray(R.array.tab_title2);
+        tabLayout.addTab(tabLayout.newTab().setText(tabsTitle[0]));
+        tabLayout.addTab(tabLayout.newTab().setText(tabsTitle[1]));
+        tabLayout.addTab(tabLayout.newTab().setText(tabsTitle[2]));
     }
 
     @Override
@@ -65,5 +83,22 @@ public class ProductFragment extends LazyLoadFragment {
             return;
         }
         //填充数据
+    }
+
+    private class MyViewPagerAdapter extends FragmentPagerAdapter {
+
+        MyViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return list.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return list.size();
+        }
     }
 }

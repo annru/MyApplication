@@ -4,9 +4,11 @@ package com.zendaimoney.laocaibao.http;
 import android.content.Context;
 
 
+import com.igexin.sdk.PushManager;
 import com.zendaimoney.laocaibao.BuildConfig;
 import com.zendaimoney.laocaibao.Constant.Constant;
 import com.zendaimoney.laocaibao.R;
+import com.zendaimoney.laocaibao.config.LoginPreferences;
 import com.zendaimoney.laocaibao.model.UserLogin;
 import com.zendaimoney.laocaibao.utils.AppUtils;
 
@@ -42,7 +44,7 @@ public class RequestParam {
             json.put(Constant.PROPERTY_REQ_HEAD_PARAM, headParam);
             json.put(Constant.PROPERTY_REQ_TIMESTAMP, "");
             json.put(Constant.PROPERTY_SN, sn);
-            json.put(Constant.PROPERTY_SIGN, EncryptTools.MD5(context, param));
+//            json.put(Constant.PROPERTY_SIGN, EncryptTools.MD5(context, param));
         } catch (JSONException e) {
             e.printStackTrace();
         }
