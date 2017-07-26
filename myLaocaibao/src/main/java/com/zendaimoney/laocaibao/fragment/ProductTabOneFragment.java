@@ -91,7 +91,7 @@ public class ProductTabOneFragment extends LazyLoadFragment implements CommonCal
 
     @Override
     public void onRefresh() {
-
+        sendRequest();
     }
 
     @Override
@@ -127,9 +127,8 @@ public class ProductTabOneFragment extends LazyLoadFragment implements CommonCal
     public void onResponse(Object result) {
         ProductsInfo info = (ProductsInfo) result;
         ProductsInfo.Infos item = info.getInfos();
-        List<ProductInfoItem> list = item.getResults();
-        Logger.d(list.size());
-
+        mData = item.getResults();
+        recyclerView.setAdapter(new MyRecyclerViewAdapter());
     }
 
     private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
