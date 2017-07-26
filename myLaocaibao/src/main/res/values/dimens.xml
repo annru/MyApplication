@@ -32,4 +32,12 @@
     <!-- jd -->
     <dimen name="refresh_header_height_jd">100dp</dimen>
 
+
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_xSmall">16sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_huge">32sp</dimen>
+    <dimen name="text_size_xhuge">45sp</dimen>
 </resources>

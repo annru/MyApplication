@@ -1,7 +1,5 @@
 package com.zendaimoney.laocaibao.http;
 
-import com.zendaimoney.laocaibao.model.MsgExInfo;
-
 public class Result {
     public static final String CODE_OK = "0000";
     public static final String CODE_0111 = "0111";
@@ -12,8 +10,7 @@ public class Result {
     public static final String CODE_5104 = "5104";//系统升级维护中，请稍后再试
     public static final String CODE_0102 = "0102";//系统异常,请联系管理员
     private String code;
-    private MsgExInfo msgEx;
-    private String msg;
+    private MsgResult msgEx;
 
     public String getCode() {
         return code;
@@ -23,19 +20,11 @@ public class Result {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public MsgExInfo getMsgEx() {
+    public MsgResult getMsgEx() {
         return msgEx;
     }
 
-    public void setMsgEx(MsgExInfo msgEx) {
+    public void setMsgEx(MsgResult msgEx) {
         this.msgEx = msgEx;
     }
 }

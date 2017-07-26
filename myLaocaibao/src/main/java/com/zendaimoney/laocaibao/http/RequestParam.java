@@ -6,7 +6,7 @@ import android.content.Context;
 
 import com.igexin.sdk.PushManager;
 import com.zendaimoney.laocaibao.BuildConfig;
-import com.zendaimoney.laocaibao.Constant.Constant;
+import com.zendaimoney.laocaibao.constant.Constant;
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.config.LoginPreferences;
 import com.zendaimoney.laocaibao.model.UserLogin;

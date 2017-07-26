@@ -4,6 +4,8 @@ import android.app.Application;
 import android.widget.Toast;
 
 import com.igexin.sdk.PushManager;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.taobao.sophix.PatchStatus;
 import com.taobao.sophix.SophixManager;
 import com.taobao.sophix.listener.PatchLoadStatusListener;
@@ -49,5 +51,8 @@ public class MyApplication extends Application {
 
         //个推sdk初始化
         PushManager.getInstance().initialize(this.getApplicationContext());
+
+        //日志
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 }

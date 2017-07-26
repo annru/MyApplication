@@ -10,6 +10,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.adapter.FragmentAdapter;
 import com.zendaimoney.laocaibao.fragment.MainFragment;
+import com.zendaimoney.laocaibao.fragment.MoreFragment;
+import com.zendaimoney.laocaibao.fragment.MyCenterFragment;
 import com.zendaimoney.laocaibao.fragment.ProductFragment;
 
 import java.util.ArrayList;
@@ -39,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
         List<Fragment> list = new ArrayList<>();
         list.add(MainFragment.newInstances());
         list.add(ProductFragment.newInstances());
-
-        list.add(ProductFragment.newInstances());
-        list.add(ProductFragment.newInstances());
+        list.add(MyCenterFragment.newInstances());
+        list.add(MoreFragment.newInstances());
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

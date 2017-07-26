@@ -3,7 +3,7 @@ package com.zendaimoney.laocaibao.config;
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.zendaimoney.laocaibao.Constant.Constant;
+import com.zendaimoney.laocaibao.constant.Constant;
 import com.zendaimoney.laocaibao.model.UserLogin;
 import com.zendaimoney.laocaibao.model.UserLoginInfoItem;
 import com.zendaimoney.laocaibao.utils.SPUtils;

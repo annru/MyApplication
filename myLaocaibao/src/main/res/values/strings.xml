@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">我的捞财</string>
     <string-array name="tab_title">
         <item>首页</item>
         <item>理财</item>
@@ -12,4 +12,274 @@
         <item>散标</item>
         <item>理财计划</item>
     </string-array>
+
+
+    <string name="register_red_packet">注册就送200元红包</string>
+    <string name="login_logo_tip">有温度的互联网金融平台</string>
+    <string name="invest_agreement">投资协议</string>
+    <string name="buy_immediately">立即抢购</string>
+    <string name="current_password">请输入原密码</string>
+    <string name="new_password">请输入新密码</string>
+    <string name="next_new_password">再次输入新密码</string>
+    <string name="confirm">确定</string>
+    <string name="login_password">请输入密码</string>
+    <string name="register_login_password">登录密码</string>
+    <string name="login">登录</string>
+    <string name="login_forget_password">忘记密码</string>
+    <string name="register">注册</string>
+    <string name="login_to_register">免费注册</string>
+    <string name="message_authentication_code">短信验证码</string>
+    <string name="get_message_authentication_code">获取验证码</string>
+    <string name="register_protocol">注册协议</string>
+    <string name="register_activity_protocol">注册即视为同意《注册协议》</string>
+    <string name="huarui_bank_protocol">点击确定,即同意《上海华瑞银行在线资金存管第三方协议》</string>
+    <string name="more_help">帮助中心</string>
+    <string name="more_update">检查更新</string>
+    <string name="feedback_commit">提交</string>
+    <string name="feedback_content">哪里用着不爽，来告诉我们吧！</string>
+    <string name="feedback_information">邮箱/QQ/手机(非必填)</string>
+    <string name="service_error">服务器异常，请稍后再试</string>
+    <string name="invitation_code">邀请码（仅在注册时选填）</string>
+    <string name="input_amount">输入购买金额</string>
+    <string name="product_name">产品名称</string>
+    <string name="interestStartDate">起息日期</string>
+    <string name="interestEndDate">到期日期</string>
+    <string name="over_interestonprincipal">到期本息</string>
+    <string name="data_no">暂无数据</string>
+    <string name="no_connection">当前没有连上网络</string>
+    <string name="balance_pay">余额支付：</string>
+    <string name="use_integral">使用积分</string>
+    <string name="integral_remind2">积分余额</string>
+    <string name="select_province">选择省份</string>
+    <string name="select_city">选择城市</string>
+    <string name="select_subbank">选择支行</string>
+    <string name="immediate_pay">立即支付</string>
+    <string name="submit_order">确认购买</string>
+    <string name="can_not_buy">该项目仅供首次投资用户专享</string>
+    <string name="open_red_envelope">已开启红包</string>
+    <string name="stay_open_red_envelope">待开启红包</string>
+    <string name="more">更多</string>
+    <string-array name="tabs_text_array">
+        <item>首页</item>
+        <item>理财</item>
+        <item>小象生活</item>
+        <item>我的</item>
+    </string-array>
+
+    <string-array name="share_platform_title">
+        <item>微信好友</item>
+        <item>朋友圈</item>
+        <item>QQ好友</item>
+        <item>QQ空间</item>
+        <item>新浪微博</item>
+        <item>邮件</item>
+        <item>短信</item>
+    </string-array>
+
+
+    <!-- Gesture code starting -->
+    <string name="setup_gesture_code">设置手势密码</string>
+    <string name="forget_gesture_code">忘记手势密码</string>
+    <string name="use_other_account_login">使用其他账号登录</string>
+    <string name="set_gesture_pattern">绘制解锁图案</string>
+
+
+    <string name="hint_real_name_authentication">您未实名认证，请去实名认证?</string>
+    <string name="real_name_authentication">实名认证</string>
+    <string name="unautherized">未认证</string>
+    <string name="authenticated">已认证</string>
+    <string name="now_authentication">立即认证</string>
+    <string name="later_authentication">稍后认证</string>
+    <string name="second">s</string>
+    <string name="phone_number">手机号码</string>
+    <string name="input_verify_code">输入验证码</string>
+    <string name="confirm_pay">确认支付</string>
+    <string name="confirm_deduct">确认划扣</string>
+    <string name="pay_mode">选择支付方式</string>
+    <string name="cashier">收银台</string>
+    <string name="your_phone_number">您的手机号为:</string>
+    <string name="colon">:</string>
+    <string name="have">还有</string>
+    <string name="end">结束</string>
+    <string name="default_zero">0</string>
+    <string name="percent">%</string>
+    <string name="day">天</string>
+    <string name="gushou_product">固收产品</string>
+    <string name="yueying_product">月盈产品</string>
+    <string name="transfer_product">转让产品</string>
+
+    <string name="profit_year">历史年化收益率</string>
+
+
+    <string name="default_value_point">0.00</string>
+    <string name="recharge">充值</string>
+    <string name="apply_cash">提现</string>
+    <string name="not_sufficient_funds">余额不足</string>
+    <string name="available_balance_yuan">可用余额</string>
+    <string name="investment_assets">投资资产</string>
+    <string name="invite_friends">邀请有奖</string>
+    <string name="xiaoxiang_life">小象生活</string>
+    <string name="task_center">任务中心</string>
+    <string name="my_reward">我的福利</string>
+    <string name="my_invest">我的投资</string>
+    <string name="transaction_record">交易记录</string>
+    <string name="team_home">组队投资</string>
+    <string name="task_center_sub">做任务，赚捞财币</string>
+    <string name="my_reward_word">红包、加息券、积分与预约券</string>
+    <string name="holding_investment_amount">持有中%s元</string>
+    <string name="laocaibao_store">捞财币商城</string>
+    <string name="laocaibao_store_sub">捞财币可以兑换好东西哟</string>
+    <string name="risk_test">风险测试</string>
+    <string name="risk_test_type">保守型</string>
+    <string name="my_center">个人中心</string>
+    <string name="about_us">关于我们</string>
+    <string name="set_trading_password">设置交易密码</string>
+    <string name="change_login_password">修改登录密码</string>
+    <string name="use_gesture_password">使用手势密码</string>
+    <string name="binding_mobile_phone">绑定手机</string>
+    <string name="logging_out">安全退出</string>
+    <string name="my_bank_card">我的银行卡</string>
+    <string name="deadline_calendar">到期日历</string>
+    <string name="help_feedback">帮助反馈</string>
+    <string name="skip">跳过%s</string>
+    <string name="version_name">版本号V%s</string>
+
+
+    <string name="interest_non_pay">待收利息(元)</string>
+    <string name="interest_paiy">已收利息(元)</string>
+    <string name="recharge_tip2">注：充值金额10-15分钟到账，请之后下拉刷新</string>
+    <string name="cashier_tip">温馨提示：积分、红包和加息券不能同时使用</string>
+    <string name="recharge_tip">充值说明：</string>
+    <string name="bank_card_no">银行卡号</string>
+    <string name="bank_card_no_hint">输入银行卡号</string>
+    <string name="recharge_amount">充值金额</string>
+    <string name="recharge_amount_hint">请输入1元以上的充值金额</string>
+    <string name="pay_result">购买结果</string>
+    <string name="see_investment_assets">查看持有资产</string>
+    <string name="continue_buy">继续购买</string>
+
+
+    <string name="input_trade_pwd">请输入交易密码</string>
+
+    <string name="sunday">日</string>
+    <string name="monday">一</string>
+    <string name="tuesday">二</string>
+    <string name="wednesday">三</string>
+    <string name="thursday">四</string>
+    <string name="friday">五</string>
+    <string name="saturday">六</string>
+
+    <string name="tian">%1$s天</string>
+    <string name="invest_lower">%1$s元起投</string>
+    <string name="remind_amount">剩余%1$s元</string>
+    <string name="baifenhao" formatted="false">%1$s%%</string>
+    <string name="red_packet_count">%1$d个可用红包</string>
+    <string name="enable_use_coupon">%1$d张可用加息券</string>
+    <string name="interest_ticket_count">%1$d张加息券</string>
+    <string name="interest_rates_yield">加息收益%1$s元</string>
+    <string name="integral_convert">%1$d积分=1元人民币，积分最高可以抵扣%2$d%%的购买金额"</string>
+
+    <string name="red_back_had">共计%s元红包可用，赶紧去投资赚钱吧</string>
+    <string name="red_back_no">凡待开启红包只需点击分享按钮，邀请一位好友成功注册即可激活。用户投资时，红包可用于抵扣投资本金。</string>
+
+    <string name="interest_tickets_tips">共有%d张加息券可用,赶紧去投资赚钱吧</string>
+    <string name="voice_verification_code">语音验证码</string>
+    <string name="retry">%1$d秒后重试</string>
+    <string name="account_remind_money">账户余额:%s</string>
+
+    <string name="product_information">产品详情</string>
+    <string name="investment_effect">投资生效</string>
+    <string name="transfer">转让</string>
+    <string name="transfer_cancle">撤销转让</string>
+    <string name="transfer_price">转让价格</string>
+    <string name="transfer_rate">转让利率</string>
+    <string name="transfer_detail">转让详情</string>
+    <string name="transfer_failed_msg">您可以继续转让，降低转让价格，转让成功机率较大哦！</string>
+
+    <string name="pay_back_plan">回款计划</string>
+    <string name="point_pay">积分支付</string>
+    <string name="red_pay">红包支付</string>
+    <string name="product_deadline">产品期限</string>
+    <string name="receivable_money">应收本息(元)</string>
+
+    <string name="transfer_per_year_rate" formatted="false">转让产品利率(年): %1$s%%</string>
+    <string name="yuan_two">%1$s元</string>
+    <string name="fen">%1$s分</string>
+    <string name="count_down_try">%1ds秒后重试</string>
+
+    <string name="transfer_amount">转让金额%s元需要全部购买</string>
+    <string name="transfer_amount2">需全额购买 | 剩余%s元</string>
+    <string name="transfer_hold_day">持有%s天后可转让</string>
+
+
+    <string name="zhang">%s张</string>
+    <string name="appointment_ticket_num">%d张</string>
+    <string name="point_use_desc">积分是证大财富集团在线上为用户提供的虚拟币，在投资中可用来实际抵扣投资本金，100积分相当于1元投资金。</string>
+    <string name="yuan_hongbao">%s元红包</string>
+    <string name="add_interest">%1$s+%2$s</string>
+    <string name="add">+%s</string>
+    <string name="subtract">-%s</string>
+    <string name="serial_number">流水号：%s</string>
+    <string name="t_2">%s(到期后T+2到账)</string>
+    <string name="binding_mobile">已绑定手机号:%s</string>
+    <string name="exchange_appointment">此次兑换将使用%d捞财币，确认兑换吗？</string>
+    <string name="buy_person">%s人已购买</string>
+    <string name="appointment_tip">您需有预约券或%s后未满标方能购买。没有预约券？</string>
+    <string name="cashier_agreement_desc1">点击立即支付即视为本人已阅读</string>
+    <string name="cashier_agreement_desc2">，并已理解和接受上述文件的全部内容，同意授权捞财宝平台调用您的数字证书完成电子签名</string>
+    <string name="s_percent">%s%%</string>
+    <string name="shipping_address_area">所在地区</string>
+    <string name="shipping_address_info">地址信息</string>
+    <string name="shipping_address">收货地址</string>
+    <string name="add_shipping_address">+新增收货地址</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
+    <string name="contact">收货人</string>
+    <string name="contact_way">联系方式</string>
+    <string name="detail_address">详细地址</string>
+    <string name="new_contact">新建收货人</string>
+    <string name="edit_contact">编辑收货人</string>
+    <string name="official_website">官网</string>
+    <string name="official_website_laocaibao">www.laocaibao.com</string>
+    <string name="customer_service_qq">客服QQ</string>
+    <string name="customer_service_qq_value">1943412854</string>
+    <string name="customer_service_mail">客服邮箱</string>
+    <string name="customer_service_mail_value">lcbservice@laocaibao.com</string>
+    <string name="customer_service_hot_line">客服热线(工作日9:00 - 18:00)</string>
+    <string name="customer_service_phone">400-096-6588</string>
+    <string name="platform_calendar">平台日历</string>
+    <string name="zero_prefix">0%1$d</string>
+    <string name="sign_award">签到领积分，领捞财币</string>
+    <string name="flash_sale">限时抢购</string>
+    <string name="cumulative_volume">捞财宝累计交易额(元)</string>
+    <string name="tips">专业风控团队  1000元起投</string>
+    <string name="check_version_name">V%s版本更新</string>
+    <string name="find_new_version">发现新版本V%s</string>
+    <string name="now_update">立即更新</string>
+    <string name="curr_version_name">V%s</string>
+    <string name="account_name">你好，%s</string>
+    <string name="new_hand">新手专享</string>
+    <string name="product_sold_out">该产品已售罄</string>
+    <string name="date_default">2016-01-01</string>
+    <string name="day_default">7天</string>
+    <string name="integral_unit">分</string>
+
+    <string name="view_now">立即查看</string>
+    <string name="laocaibi_count_text">%s></string>
+    <string name="refund_month_unreceived">预计%d月待回款（元）</string>
+    <string name="refund_month_received">%d月已回款（元）</string>
+    <string name="dialog_sign_desc"> 1、每日签到随机0-1000捞财币\n2、逢周末额外奖励1000捞财币\n3、连续7天签到额外奖励1张加息券，加息比例随机，最高18.8%\n4、连续15天签到额外奖励1个红包，红包金额随机，最高200元\n5、连续30天签到额外奖励1张预约券"</string>
+    <string name="bank_text">您的资产由华瑞银行全程监管</string>
+    <string name="bank_card_no_end">尾号：%s</string>
+    <string name="withdraw_max_amount">本次最多可提现%s元</string>
+    <string name="app_start">点击开始</string>
+    <string name="reservation_products_desc">该产品需使用预约券购买 %s后全面开售</string>
+    <string name="not_installed_wechat">您没有安装微信</string>
+    <string name="guide_xiaoxiang_online">小象生活全新上线\n更多优品尽在其中</string>
+    <string name="guide_about_us">“关于我们”与“帮助反馈”\n搬家到这里啦</string>
+    <string name="financial_plan_term_start">购买后3个工作日内</string>
+    <string name="financial_plan_term_end">封闭期结束5个工作日内</string>
+    <string name="guide_msg_1">转让产品搬家啦！\n可在产品列表页寻找哦~</string>
+    <string name="guide_msg_2">理财计划产品上线啦！\n期限灵活 自动复投</string>
 </resources>

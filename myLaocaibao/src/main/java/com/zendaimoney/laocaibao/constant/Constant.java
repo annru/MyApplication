@@ -1,4 +1,4 @@
-package com.zendaimoney.laocaibao.Constant;
+package com.zendaimoney.laocaibao.constant;
 
 import android.os.Environment;
 

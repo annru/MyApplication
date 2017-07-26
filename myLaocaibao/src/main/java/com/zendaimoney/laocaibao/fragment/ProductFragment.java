@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,8 @@ import butterknife.ButterKnife;
  * description:
  */
 
-public class ProductFragment extends LazyLoadFragment {
+public class ProductFragment extends LazyLoadFragment implements ViewPager.OnPageChangeListener, TabLayout
+        .OnTabSelectedListener {
     private boolean isPrepared;//初始化完成标识符
 
 
@@ -66,15 +68,19 @@ public class ProductFragment extends LazyLoadFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.i("onActivityCreated", "初始化");
+        list.clear();
         list.add(ProductTabOneFragment.newInstance());
         list.add(ProductTabTwoFragment.newInstance());
-        list.add(ProductTabOneFragment.newInstance());
+        list.add(ProductTabThreeFragment.newInstance());
         FragmentManager fm = getChildFragmentManager();
         viewPager.setAdapter(new MyViewPagerAdapter(fm));
+        viewPager.addOnPageChangeListener(this);
         String[] tabsTitle = getActivity().getResources().getStringArray(R.array.tab_title2);
         tabLayout.addTab(tabLayout.newTab().setText(tabsTitle[0]));
         tabLayout.addTab(tabLayout.newTab().setText(tabsTitle[1]));
         tabLayout.addTab(tabLayout.newTab().setText(tabsTitle[2]));
+        tabLayout.setOnTabSelectedListener(this);
     }
 
     @Override
@@ -83,6 +89,37 @@ public class ProductFragment extends LazyLoadFragment {
             return;
         }
         //填充数据
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        tabLayout.setScrollPosition(position, 0, false);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        Log.i("onTabSelected", tab.getPosition() + "");
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
     }
 
     private class MyViewPagerAdapter extends FragmentPagerAdapter {

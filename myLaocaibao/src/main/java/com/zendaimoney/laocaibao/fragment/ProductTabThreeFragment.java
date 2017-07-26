@@ -2,6 +2,8 @@ package com.zendaimoney.laocaibao.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,9 @@ import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.base.LazyLoadFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -20,15 +25,15 @@ import butterknife.ButterKnife;
  * description:
  */
 
-public class ProductTabTwoFragment extends LazyLoadFragment implements OnRefreshListener, OnLoadMoreListener {
+public class ProductTabThreeFragment extends LazyLoadFragment implements OnRefreshListener, OnLoadMoreListener {
 
 
-    @BindView(R.id.sanbiao_tv)
-    TextView sanbiaoTv;
+    @BindView(R.id.plan_tv)
+    TextView planTv;
 
 
-    public static ProductTabTwoFragment newInstance() {
-        return new ProductTabTwoFragment();
+    public static ProductTabThreeFragment newInstance() {
+        return new ProductTabThreeFragment();
     }
 
 
@@ -36,7 +41,7 @@ public class ProductTabTwoFragment extends LazyLoadFragment implements OnRefresh
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
             savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_product_tab_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_product_tab_three, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -44,7 +49,8 @@ public class ProductTabTwoFragment extends LazyLoadFragment implements OnRefresh
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        sanbiaoTv.setText("散标");
+        planTv.setText("理财计划");
+
     }
 
     @Override
@@ -65,5 +71,6 @@ public class ProductTabTwoFragment extends LazyLoadFragment implements OnRefresh
     private void sendRequest() {
 
     }
+
 
 }

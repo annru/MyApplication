@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
-import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.base.LazyLoadFragment;
 
@@ -16,54 +14,53 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by 00224524 on 2017/7/24.
+ * Created by 00224524 on 2017/6/13.
  * description:
  */
 
-public class ProductTabTwoFragment extends LazyLoadFragment implements OnRefreshListener, OnLoadMoreListener {
+public class MyCenterFragment extends LazyLoadFragment {
+    private boolean isPrepared;//初始化完成标识符
 
 
-    @BindView(R.id.sanbiao_tv)
-    TextView sanbiaoTv;
-
-
-    public static ProductTabTwoFragment newInstance() {
-        return new ProductTabTwoFragment();
+    public static MyCenterFragment newInstances() {
+        MyCenterFragment myCenterFragment = new MyCenterFragment();
+        return myCenterFragment;
     }
 
+    public MyCenterFragment() {
+        //需要默认的构造方法
+    }
+
+    @BindView(R.id.test_tv)
+    TextView testTv;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
             savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_product_tab_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_center, container, false);
         ButterKnife.bind(this, view);
+        isPrepared = true;
+        lazyLoad();
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        sanbiaoTv.setText("散标");
+        testTv.setText("我的");
     }
 
     @Override
     protected void lazyLoad() {
-
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        //填充数据
     }
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    @Override
-    public void onLoadMore() {
-
-    }
-
-    private void sendRequest() {
-
-    }
-
 }

@@ -9,5 +9,5 @@ public interface CommonCallBack {
 
     void onFail();
 
-    String onResponse(String result);
+    void onResponse(Object object);
 }

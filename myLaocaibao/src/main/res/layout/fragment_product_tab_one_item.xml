@@ -1,17 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
     >
 
-    <TextView
-        android:id="@+id/test_tv"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/product_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="2dp"
+                android:paddingTop="5dp"
+                android:text="捞财宝5号"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/text_size_xSmall"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/product_flag_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_product_flag_bg"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_micro"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/start_time_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_product_sale_time_bg"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/color_EBBB65"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="抢"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/sale_start_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="2017-05-23 11:45:10"
+                android:textColor="@color/color_EBBB65"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/interest_rv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7">
+
+                <TextView
+                    android:id="@+id/rate_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8.5%"
+                    android:textColor="@color/color_ea3e4f"
+                    android:textSize="@dimen/text_size_large"
+                    tools:ignore="HardcodedText"/>
+
+                <TextView
+                    android:id="@+id/add_interest_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/rate_tv"
+                    android:layout_toRightOf="@+id/rate_tv"
+                    android:text="+1%"
+                    android:textColor="@color/color_ea3e4f"
+                    android:textSize="@dimen/text_size_small"
+                    tools:ignore="HardcodedText"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="13"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/closed_period_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="封闭期"
+                    android:textColor="@color/color_B6B6B6"
+                    android:visibility="gone"
+                    tools:ignore="HardcodedText"/>
+
+                <TextView
+                    android:id="@+id/term_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30天"
+                    android:textColor="@color/color_676767"
+                    android:textSize="@dimen/text_size_large"
+                    tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:text="@string/profit_year"
+                android:textColor="@color/color_B6B6B6"/>
+
+            <TextView
+                android:id="@+id/invest_min_amount_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="13"
+                android:text="1000"
+                android:textColor="@color/color_B6B6B6"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sale_tip_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@color/color_F5F5F5"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:textColor="@color/color_B6B6B6"
+            android:textSize="@dimen/text_size_small"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/product_recommend_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
+        android:layout_gravity="top|end"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_recommend"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/sell_out_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_sell_out"
+        android:visibility="gone"/>
+</FrameLayout>
 
 
-</RelativeLayout>

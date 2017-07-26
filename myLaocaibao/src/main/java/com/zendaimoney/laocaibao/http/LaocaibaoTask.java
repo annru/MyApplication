@@ -34,20 +34,18 @@ public class LaocaibaoTask {
     }
 
 
-    public void send() {
+    public void send(Class<?> c) {
         String baseUrl = BuildConfig.BASE_URL;
         RequestParam requestParam = new RequestParam();
         arg1 = requestParam.getRequestParams(mContext, mJsonObject);
-        LcbOkHttpClient.getInstance().post(mCallBackListener, baseUrl, arg0, arg1);
+        LcbOkHttpClient.getInstance().post(mCallBackListener, baseUrl, arg0, arg1, c);
     }
 
     private <T> T getJsonFromNet(Class<T> c) {
 
-//        AppLog.i("请求的接口地址", baseUrl);
         RequestParam requestParam = new RequestParam();
         arg1 = requestParam.getRequestParams(mContext, mJsonObject);
 
-//        AppLog.i("请求参数" + "【" + arg0 + "】", arg1);
         String result = "";
         try {
 //            result = LcbOkHttpClient.getInstance().post(baseUrl, arg0, arg1);
