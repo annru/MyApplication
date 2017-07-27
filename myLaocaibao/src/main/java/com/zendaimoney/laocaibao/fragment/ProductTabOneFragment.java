@@ -91,7 +91,7 @@ public class ProductTabOneFragment extends LazyLoadFragment implements CommonCal
                 }
             }
         });
-        sendRequest();
+//        sendRequest();
     }
 
     @Override
