@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
@@ -58,6 +59,7 @@ public class ProductTabOneFragment extends LazyLoadFragment implements CommonCal
     private List<ProductInfoItem> mData;
     private int mPageNo = 1;
     private static final int PAGE_SIZE = 10;
+    private int n = 0;
 
     public static ProductTabOneFragment newInstance() {
         return new ProductTabOneFragment();
@@ -79,8 +81,16 @@ public class ProductTabOneFragment extends LazyLoadFragment implements CommonCal
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setVerticalScrollBarEnabled(true);
-//        recyclerView.setAdapter(new MyRecyclerViewAdapter());
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (!ViewCompat.canScrollVertically(recyclerView, 1)) {
+                        swipeToLoadLayout.setLoadingMore(true);
+                    }
+                }
+            }
+        });
         sendRequest();
     }
 
@@ -92,15 +102,24 @@ public class ProductTabOneFragment extends LazyLoadFragment implements CommonCal
     @Override
     public void onRefresh() {
         sendRequest();
+        Logger.d("下拉刷新");
     }
 
     @Override
     public void onLoadMore() {
-
+        sendRequest();
+        Logger.d("加载了更多");
+        n++;
     }
 
     private void sendRequest() {
-        sendRequest(ProductsInfo.class, getParamsToJson(false), MethodCode.PRODUCTS_LIST, this);
+        swipeToLoadLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                sendRequest(ProductsInfo.class, getParamsToJson(false), MethodCode.PRODUCTS_LIST,
+                        ProductTabOneFragment.this);
+            }
+        });
     }
 
     private JSONObject getParamsToJson(boolean isRefresh) {
@@ -128,7 +147,17 @@ public class ProductTabOneFragment extends LazyLoadFragment implements CommonCal
         ProductsInfo info = (ProductsInfo) result;
         ProductsInfo.Infos item = info.getInfos();
         mData = item.getResults();
-        recyclerView.setAdapter(new MyRecyclerViewAdapter());
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                swipeToLoadLayout.setRefreshing(false);
+                swipeToLoadLayout.setLoadingMore(false);
+                recyclerView.setAdapter(new MyRecyclerViewAdapter());
+                if (n == 3) {
+                    swipeToLoadLayout.setLoadMoreEnabled(false);
+                }
+            }
+        });
     }
 
     private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
