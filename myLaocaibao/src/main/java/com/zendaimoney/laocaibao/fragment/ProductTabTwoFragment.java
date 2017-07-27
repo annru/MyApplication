@@ -16,6 +16,7 @@ import com.zendaimoney.laocaibao.constant.ParamsKey;
 import com.zendaimoney.laocaibao.http.CommonCallBack;
 import com.zendaimoney.laocaibao.model.ProductInfoItem;
 import com.zendaimoney.laocaibao.model.ProductsInfo;
+import com.zendaimoney.laocaibao.view.MyRefreshHeaderView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,6 +67,7 @@ public class ProductTabTwoFragment extends LazyLoadFragment implements CommonCal
         xRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new ProductAdapter(getActivity(), mData);
         xRecyclerView.setAdapter(mAdapter);
+        xRecyclerView.setRefreshHeader(new MyRefreshHeaderView(getActivity()));
         sendRequest();
     }
 
