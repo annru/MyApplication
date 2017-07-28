@@ -282,4 +282,14 @@
     <string name="financial_plan_term_end">封闭期结束5个工作日内</string>
     <string name="guide_msg_1">转让产品搬家啦！\n可在产品列表页寻找哦~</string>
     <string name="guide_msg_2">理财计划产品上线啦！\n期限灵活 自动复投</string>
+
+
+    <string name="listview_header_hint_normal">pull to refresh</string>
+    <string name="listview_header_hint_release">release to start refresh</string>
+    <string name="listview_loading">loading...</string>
+    <string name="nomore_loading">no more to be loaded</string>
+    <string name="refreshing">refreshing...</string>
+    <string name="refresh_done">refresh done</string>
+    <string name="loading_done">loading done</string>
+    <string name="listview_header_last_time">last update：</string>
 </resources>

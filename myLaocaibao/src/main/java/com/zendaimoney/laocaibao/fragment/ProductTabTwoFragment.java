@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.adapter.ProductAdapter;
 import com.zendaimoney.laocaibao.base.LazyLoadFragment;
@@ -16,7 +15,7 @@ import com.zendaimoney.laocaibao.constant.ParamsKey;
 import com.zendaimoney.laocaibao.http.CommonCallBack;
 import com.zendaimoney.laocaibao.model.ProductInfoItem;
 import com.zendaimoney.laocaibao.model.ProductsInfo;
-import com.zendaimoney.laocaibao.view.MyRefreshHeaderView;
+import com.zendaimoney.laocaibao.pullrefresh2.XRecyclerView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +66,6 @@ public class ProductTabTwoFragment extends LazyLoadFragment implements CommonCal
         xRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new ProductAdapter(getActivity(), mData);
         xRecyclerView.setAdapter(mAdapter);
-        xRecyclerView.setRefreshHeader(new MyRefreshHeaderView(getActivity()));
         sendRequest();
     }
 

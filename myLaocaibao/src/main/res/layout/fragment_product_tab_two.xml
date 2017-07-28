@@ -3,7 +3,7 @@
                 android:layout_height="match_parent">
 
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
+    <com.zendaimoney.laocaibao.pullrefresh2.XRecyclerView
         android:id="@+id/x_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
