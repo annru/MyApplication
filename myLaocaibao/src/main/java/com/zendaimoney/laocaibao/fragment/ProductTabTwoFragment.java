@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.zendaimoney.laocaibao.R;
 import com.zendaimoney.laocaibao.adapter.ProductAdapter;
@@ -66,6 +67,18 @@ public class ProductTabTwoFragment extends LazyLoadFragment implements CommonCal
         xRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new ProductAdapter(getActivity(), mData);
         xRecyclerView.setAdapter(mAdapter);
+
+        View view = LayoutInflater.from(getActivity())
+                .inflate(R.layout.view_header, (ViewGroup) getActivity().findViewById(android.R.id.content), false);
+
+        xRecyclerView.addHeaderView(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+        xRecyclerView.setFootViewText("加载更多...","没有更多了");
         sendRequest();
     }
 
