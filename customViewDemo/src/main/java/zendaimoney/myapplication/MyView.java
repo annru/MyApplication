@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -28,6 +29,22 @@ public class MyView extends View {
         mPaint.setTextSize(textSize);
         mPaint.setColor(textColor);
         a.recycle();
+
+        int attributeCount = attrs.getAttributeCount();
+        Log.i("test123", "当前属性个数为：" + attributeCount);
+
+
+        for (int i = 0; i < attributeCount; i++) {
+            String attributeName = attrs.getAttributeName(i);
+            Log.i("test123", String.format("当前属性索引为：%d,索引名为：%s", i, attributeName));
+            if (attributeName.equals("style")) {
+                String attributeValue = attrs.getAttributeValue(i);
+                Log.i("test123", "当前属性值为：：" + attributeValue);
+
+
+            }
+
+        }
     }
 
     @Override

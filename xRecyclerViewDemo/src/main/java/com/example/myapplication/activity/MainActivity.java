@@ -6,13 +6,20 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.AnimalsHeadersAdapter;
 import com.example.myapplication.adapter.DividerDecoration;
+import com.jcodecraeer.xrecyclerview.ArrowRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersTouchListener;
 
 import java.util.ArrayList;
 
@@ -53,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set adapter populated with example dummy data
         final AnimalsHeadersAdapter adapter = new AnimalsHeadersAdapter();
-        adapter.add("Animals below!");
+//        adapter.add("Animals below!");
         adapter.addAll(getDummyDataSet());
         xRecyclerView.setAdapter(adapter);
 
@@ -62,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
 //        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 //        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 //        xRecyclerView.setLayoutManager(layoutManager);
-
+//        xRecyclerView.addHeaderView(getHeaderView());
+//        xRecyclerView.addHeaderView(getHeaderView());
+//        xRecyclerView.setRefreshHeader(new CustomRefreshHeader(this));
 
         int orientation = getLayoutManagerOrientation(getResources().getConfiguration().orientation);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this, orientation, false);
@@ -80,6 +89,29 @@ public class MainActivity extends AppCompatActivity {
                 headersDecor.invalidateHeaders();
             }
         });
+
+
+        // 为RecyclerView添加普通Item的点击事件（点击Header无效）
+        xRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new
+                RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Toast.makeText(MainActivity.this, adapter.getItem(position) + " Clicked", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                }));
+        // 为RecyclerView添加Header的点击事件
+        StickyRecyclerHeadersTouchListener touchListener = new StickyRecyclerHeadersTouchListener(xRecyclerView,
+                headersDecor);
+        touchListener.setOnHeaderClickListener(new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
+            @Override
+            public void onHeaderClick(View header, int position, final long headerId) {
+                Toast.makeText(MainActivity.this, "Header position: " + (position - 1) + ", id: " + headerId, Toast
+                        .LENGTH_SHORT)
+                        .show();
+            }
+        });
+        xRecyclerView.addOnItemTouchListener(touchListener);
 
 
         xRecyclerView.setLoadingMoreEnabled(false);
@@ -128,6 +160,15 @@ public class MainActivity extends AppCompatActivity {
                 times++;
             }
         });
+    }
+
+    private View getHeaderView() {
+        ImageView view = new ImageView(this);
+        view.setImageResource(R.mipmap.ic_launcher);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup
+                .LayoutParams.WRAP_CONTENT);
+        view.setLayoutParams(lp);
+        return view;
     }
 
     private String[] getDummyDataSet() {
