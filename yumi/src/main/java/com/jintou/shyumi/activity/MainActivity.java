@@ -16,7 +16,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    private final static String URL = "http://www.shyumi.com:9090/web/index.do";
+    //    private final static String URL = "http://www.shyumi.com:9090/web/index.do";
+    private final static String URL = "http://www.yajinbao.cn";
 
     @Bind(R.id.web_view)
     CustomWebView mWebView;

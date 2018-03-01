@@ -1,1 +1,2 @@
-include ':anzhixiangDemo', ':RxJavaDemo', ':myRecyclerView', ':myMVP', ':yumi', ':xRecyclerViewDemo', ':mylibrary', ':activityResultDemo', ':multipleStatusLayoutDemo', ':kotlinDemo'
+include ':anzhixiangDemo', ':myRecyclerView', ':myMVP', ':xRecyclerViewDemo', ':mylibrary', ':activityResultDemo', ':multipleStatusLayoutDemo', ':customViewDemo', ':greenDAODemo', ':RxJavaDemo', ':myLaocaibao', ':yumi', ':yajinbao', ':reactNativeDeamo'
+
