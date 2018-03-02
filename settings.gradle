@@ -1,1 +1,2 @@
-include ':anzhixiangDemo', ':kotlinDemo', ':routerDemo', ':viewModelDemo', ':pedometer', ':layoutAnimatorTest', ':fingerPrintMangerDemo', ':databindingDemo', ':recyclerViewDemo', ':scaleView', 'coordinatorLayoutDemo', ':customViewDemo','annotationDemo'
+include ':anzhixiangDemo', ':kotlinDemo', ':routerDemo', ':viewModelDemo', ':pedometer', ':layoutAnimatorTest', ':fingerPrintMangerDemo', ':databindingDemo', ':recyclerViewDemo', ':scaleView', 'coordinatorLayoutDemo', ':customViewDemo', 'annotationDemo'
+

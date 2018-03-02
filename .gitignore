@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /RxJavaDemo/RxJavaDemo.iml
 /build
 /.gradle
@@ -18,3 +19,30 @@
 /myMVP/myMVP.iml
 /myLaocaibao/myLaocaibao.iml
 /scaleView/scaleView.iml
+=======
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+/anzhixiangDemo/anzhixiangDemo.iml
+/app/app.iml
+/.gitignore
+/.idea
+/anzhixiangDemo/.idea
+/anzhixiangDemo/gradle
+/gradle
+/MyApplication.iml
+/myMVP/myMVP.iml
+/RxJavaDemo/RxJavaDemo.iml
+/myRecyclerView/myRecyclerView.iml
+/myLaocaibao/myLaocaibao.iml
+/multipleStatusLayoutDemo/multipleStatusLayoutDemo.iml
+/greenDAODemo/greenDAODemo.iml
+/customViewDemo/customViewDemo.iml
+/activityResultDemo/activityResultDemo.iml
+/yumi/yumi.iml
+>>>>>>> 88b53680683e6652b05512acb04c781551258ce5
+/kotlinDemo/kotlinDemo.iml
