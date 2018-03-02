@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="zendaimoney.myapplication.MainActivity">
+
+    <ImageView
+        android:id="@+id/rotate_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/ic_launcher_round"
+        />
+
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/rotate_view"
+        android:layout_margin="36dp"
+        android:max="100"
+        android:progress="100"
+        android:thumbTintMode="src_over"
+        />
+
+</RelativeLayout>
