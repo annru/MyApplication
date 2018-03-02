@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         app:lf_scale_view_height="8dp"
         app:lf_scale_view_margin="5dp"
-        app:lf_scale_view_max="200"
-        app:lf_scale_view_min="20"/>
+        app:lf_scale_view_max="1100"
+        app:lf_scale_view_min="20"
+        />
 
 </android.support.constraint.ConstraintLayout>

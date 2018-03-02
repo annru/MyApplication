@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleableRes;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -53,34 +54,44 @@ public abstract class BaseView extends View {
     /**
      * 整刻度线高度
      */
-    protected int mScaleMaxHeight;
+    protected int mScaleMaxHeight = 100;
 
     public BaseView(Context context) {
         super(context);
+        init(null);
+        Log.i("构造函数", "1");
     }
 
     public BaseView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init(attrs);
+        Log.i("构造函数", "2");
     }
 
     public BaseView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(attrs);
+        Log.i("构造函数", "3");
     }
 
     public BaseView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
+        Log.i("构造函数", "4");
     }
 
 
     private void init(AttributeSet attr) {
-        TypedArray array = getContext().obtainStyledAttributes(attr, ATTR);
-        mMin = array.getInteger(LF_SCALE_MIN, 0);
-        mMax = array.getInteger(LF_SCALE_MAX, 0);
+        TypedArray array = getContext().obtainStyledAttributes(attr, R.styleable.ScaleView);
+        mMin = array.getInteger(R.styleable.ScaleView_lf_scale_view_min, 0);
+        mMax = array.getInteger(R.styleable.ScaleView_lf_scale_view_max, 100);
+        Log.i("刻度尺宽度Min", mMin + "");
+        Log.i("刻度尺宽度Max", mMax + "");
         mScaleMargin = array.getDimensionPixelOffset(LF_SCALE_MARGIN, 15);
         mScaleHeight = array.getDimensionPixelOffset(LF_SCALE_HEIGHT, 20);
+        Log.i("刻度尺间距", mScaleMargin + "");
+        Log.i("刻度尺高度", mScaleHeight + "");
         array.recycle();
-
         initVal();
     }
 
@@ -106,5 +117,14 @@ public abstract class BaseView extends View {
      * @param paint
      */
     protected abstract void onDrawScale(Canvas canvas, Paint paint);
+
+
+    /**
+     * 画刻度数文本
+     *
+     * @param canvas
+     * @param paint
+     */
+    protected abstract void onDrawScaleText(Canvas canvas, Paint paint);
 
 }
