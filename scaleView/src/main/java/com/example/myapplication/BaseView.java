@@ -9,6 +9,8 @@ import android.support.annotation.StyleableRes;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.Scroller;
 
 /**
  * Created on 2018/2/28.
@@ -56,6 +58,29 @@ public abstract class BaseView extends View {
      */
     protected int mScaleMaxHeight = 100;
 
+
+    protected Scroller mScroller;
+    protected int mScrollLastX;
+
+    protected int mRectWidth; //总宽度
+    protected int mRectHeight; //高度
+
+    protected int mCountScale; //滑动的总刻度
+
+    protected int mTempScale; // 用于判断滑动方向
+    protected int mMidCountScale; //中间刻度
+
+
+    protected OnScrollListener mScrollListener;
+
+
+    public interface OnScrollListener {
+        void onScaleScroll(int scale);
+    }
+
+
+    protected int mScaleScrollViewRange;
+
     public BaseView(Context context) {
         super(context);
         init(null);
@@ -92,9 +117,35 @@ public abstract class BaseView extends View {
         Log.i("刻度尺间距", mScaleMargin + "");
         Log.i("刻度尺高度", mScaleHeight + "");
         array.recycle();
+
+        mScroller = new Scroller(getContext());
         initVal();
     }
 
+
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+        //是否执行完毕
+        if (mScroller.computeScrollOffset()) {
+            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            invalidate();
+        }
+    }
+
+    public void smoothScrollBy(int dx, int dy) {
+        mScroller.startScroll(mScroller.getFinalX(), mScroller.getFinalY(), dx, dy);
+    }
+
+
+    /**
+     * 设置回调监听
+     *
+     * @param listener
+     */
+    public void setOnScrollListener(OnScrollListener listener) {
+        this.mScrollListener = listener;
+    }
 
     /**
      * 子类初始化
@@ -126,5 +177,20 @@ public abstract class BaseView extends View {
      * @param paint
      */
     protected abstract void onDrawScaleText(Canvas canvas, Paint paint);
+
+
+    /**
+     * 滑动到指定刻度
+     */
+    public abstract void scrollToScale(int val);
+
+
+    /**
+     * 画指针
+     *
+     * @param canvas
+     * @param paint
+     */
+    protected abstract void onDrawPointer(Canvas canvas, Paint paint);
 
 }
