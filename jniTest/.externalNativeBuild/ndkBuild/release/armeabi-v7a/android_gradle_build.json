@@ -1,0 +1,33 @@
+{
+  "buildFiles": [
+    "E:\\MyApplication\\jniTest\\src\\main\\jni\\Android.mk",
+    "E:\\MyApplication\\jniTest\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "E:\\android-sdk_r24.4.1-windows\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003dE:/MyApplication/jniTest/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dE:\\MyApplication\\jniTest\\build\\intermediates\\ndkBuild\\release\\lib clean"
+  ],
+  "libraries": {
+    "myLib-release-armeabi-v7a": {
+      "buildCommand": "E:\\android-sdk_r24.4.1-windows\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003dE:/MyApplication/jniTest/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dE:\\MyApplication\\jniTest\\build\\intermediates\\ndkBuild\\release\\lib E:/MyApplication/jniTest/build/intermediates/ndkBuild/release/obj/local/armeabi-v7a/libmyLib.so",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "myLib",
+      "files": [
+        {
+          "src": "E:\\MyApplication\\jniTest\\src\\main\\jni\\TestJni.cpp",
+          "flags": "\"-gcc-toolchain\" \"E:/android-sdk_r24.4.1-windows/android-sdk-windows/ndk-bundle/build//../toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64\" \"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-fno-integrated-as\" \"-g\" \"-target\" \"armv7-none-linux-androideabi23\" \"-march\u003darmv7-a\" \"-mfloat-abi\u003dsoftfp\" \"-mfpu\u003dvfpv3-d16\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-Os\" \"-DNDEBUG\" \"-IE:/android-sdk_r24.4.1-windows/android-sdk-windows/ndk-bundle/build//../sources/cxx-stl/system/include\" \"-IE:/MyApplication/jniTest/src/main/jni\" \"-DANDROID\" \"-D__ANDROID_API__\u003d23\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"--sysroot\" \"E:/android-sdk_r24.4.1-windows/android-sdk-windows/ndk-bundle/build//../sysroot\" \"-isystem\" \"E:/android-sdk_r24.4.1-windows/android-sdk-windows/ndk-bundle/build//../sysroot/usr/include/arm-linux-androideabi\""
+        }
+      ],
+      "output": "E:\\MyApplication\\jniTest\\build\\intermediates\\ndkBuild\\release\\obj\\local\\armeabi-v7a\\libmyLib.so"
+    }
+  },
+  "toolchains": {
+    "toolchain-armeabi-v7a": {
+      "cppCompilerExecutable": "E:\\android-sdk_r24.4.1-windows\\android-sdk-windows\\ndk-bundle\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

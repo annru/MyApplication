@@ -1,0 +1,17 @@
+{
+  "buildFiles": [
+    "E:\\MyApplication\\jniTest\\src\\main\\jni\\Android.mk",
+    "E:\\MyApplication\\jniTest\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "E:\\android-sdk_r24.4.1-windows\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003dE:/MyApplication/jniTest/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dE:\\MyApplication\\jniTest\\build\\intermediates\\ndkBuild\\release\\lib clean"
+  ],
+  "libraries": {
+    "myLib-release-x86": {
+      "artifactName": "myLib",
+      "buildCommand": "E:\\android-sdk_r24.4.1-windows\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dE:\\MyApplication\\jniTest\\src\\main\\jni\\Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-23 NDK_OUT\u003dE:/MyApplication/jniTest/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dE:\\MyApplication\\jniTest\\build\\intermediates\\ndkBuild\\release\\lib E:/MyApplication/jniTest/build/intermediates/ndkBuild/release/obj/local/x86/libmyLib.so",
+      "abi": "x86",
+      "output": "E:\\MyApplication\\jniTest\\build\\intermediates\\ndkBuild\\release\\obj\\local\\x86\\libmyLib.so"
+    }
+  }
+}
